@@ -6,45 +6,32 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="styles.scss">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
 </head>
 
 <body>
-    <div class="container" id="outermost">
-        <!-- NAVBAR -->
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <!-- Logo -->
-                <div class="navbar-header">
-                    <a href="index.html" class="navbar-brand"><img class="img img-responsive" alt="FTC logo" src="FTC-Logo.png" /></a>
-                </div>
+      <nav class="navbar">
+        <a href="index.html"><img class="img img-responsive" alt="FTC logo" src="assets/FTC-Logo.png" /></a>
+        <ul>
+          <li class="active"><a href="index.html">Home</a></li>
+          <li><a href="ticketing.html">Ticketing</a></li>
+          <li><a href="issue-routing.html">Issue Routing</a></li>
+        </ul>
 
-                <!-- Menu Items -->
-                <div>
-                    <ul class="nav navbar-nav">
-                        <li class="active h3"><a href="index.html">Home</a></li>
-                        <li class="h3"><a href="ticketing.html">Ticketing</a></li>
-                        <li class="h3"><a href="issue-routing.html">Issue Routing</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+      </nav>
 
         <div class="container-fluid">
-
             <div class="row">
-
-
                 <div class="col-md-9 col-md-push-3" id="special-border">
                     <div class="col-md-12 well">
                         <h2>Announcements</h2>
-
                         <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                            <!-- Indicators 
+                            <!-- Indicators
                       <ol class="carousel-indicators">
                         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                         <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -230,7 +217,6 @@
                 </div>
             </div>
         </div>
-    </div>
 </body>
 
 </html>
