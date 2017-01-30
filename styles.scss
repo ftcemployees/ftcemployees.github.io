@@ -1,14 +1,22 @@
-nav {
+
+.navbar {
   display: flex;
-  background-color: #000;
+  background-color: #0073b6;
   height: 50px;
   width: 100%;
-
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
 }
- nav img {
-   height: 50px;
-   margin-top: 50px;
+.navbar img {
+  height: 55px;
+  margin-top: 8%;
+  margin-left: 10px;
+   top: 0;
+   left: 0;
  }
+
 .navbar ul {
   display: flex;
   justify-content: flex-end;
@@ -23,8 +31,14 @@ nav {
   color: #fff;
 }
 
+.navbar ul li a:hover {
+  background-color: red;
+  padding: 30px 20px;
+}
+
 .container-fluid {
   width: 80%;
+  margin-top: 80px;
 }
 
 
