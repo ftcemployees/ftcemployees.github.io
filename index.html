@@ -6,46 +6,33 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="styles.scss">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
 </head>
 
 <body>
-    <div class="container" id="outermost">
-        <!-- NAVBAR -->
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <!-- Logo -->
-                <div class="navbar-header">
-                    <a href="index.html" class="navbar-brand"><img class="img img-responsive" alt="FTC logo" src="FTC-Logo.png" /></a>
-                </div>
+      <nav class="navbar">
+        <a href="index.html"><img alt="FTC logo" src="assets/FTC-Logo.png" /></a>
+        <ul>
+          <li class="active"><a href="index.html">Home</a></li>
+          <li><a href="ticketing.html">Ticketing</a></li>
+          <li><a href="issue-routing.html">Issue Routing</a></li>
+        </ul>
 
-                <!-- Menu Items -->
-                <div>
-                    <ul class="nav navbar-nav">
-                        <li class="active h3"><a href="index.html">Home</a></li>
-                        <li class="h3"><a href="ticketing.html">Ticketing</a></li>
-                        <li class="h3"><a href="issue-routing.html">Issue Routing</a></li>
-                        <li class="h3"><a href="weekly-log.html">Weekly Log</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+      </nav>
+
 
         <div class="container-fluid">
-
-            <div class="row">
-
-
-                <div class="col-md-9 col-md-push-3" id="special-border">
-                    <div class="col-md-12 well">
+            <!-- <div class="row"> -->
+                <!-- <div class="col-md-9 col-md-push-3" id="special-border">
+                    <div class="col-lg-12"> -->
                         <h2>Announcements</h2>
-
                         <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                            <!-- Indicators 
+                            <!-- Indicators
                       <ol class="carousel-indicators">
                         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                         <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -55,24 +42,17 @@
                             <!-- Wrapper for slides -->
                             <div class="carousel-inner" role="listbox">
                                 <div class="item active">
-                                    <img class="img-responsive" src="live-pics/pic1.jpg" alt="Help us pick a new polling system">
+
+                                    <img class="img-responsive" src="assets/iclicker.jpg" alt="Help us pick a new polling system">
                                 </div>
 
                                 <div class="item">
-                                    <img class="img-responsive" src="live-pics/pic2.jpg" alt="We are willing to make office visits">
+                                    <img class="img-responsive" src="assets/office-visit.jpg" alt="We are willing to make office visits">
                                 </div>
 
                                 <div class="item">
-                                    <img class="img-responsive" src="live-pics/pic3.jpg" alt="Check out these helpful articles">
-                                </div>
-                                <div class="item">
-                                    <img class="img-responsive" src="live-pics/pic4.jpg" alt="Check out these helpful articles">
-                                </div>
-                                <div class="item">
-                                    <img class="img-responsive" src="live-pics/pic5.jpg" alt="Check out these helpful articles">
-                                </div>
-                                <div class="item">
-                                    <img class="img-responsive" src="live-pics/pic6.jpg" alt="Check out these helpful articles">
+                                    <img class="img-responsive" src="assets/screensteps.jpg" alt="Check out these helpful articles">
+
                                 </div>
 
                                 <!-- Left and right controls -->
@@ -85,11 +65,11 @@
                                     <span class="sr-only">Next</span>
                                 </a>
                             </div>
-                            <a id="fullscreen_link" href="flscrn_announce.html">Fullscreen&nbsp;&nbsp;<span class="glyphicon glyphicon-fullscreen"></span></a>
+
 
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h2>More Important Links</h2>
+                                    <h2>FTC Team</h2>
 
                                     <table class="text-center" id="bottom-table">
                                         <tbody>
@@ -152,8 +132,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3 col-md-pull-9 well">
-                    <h2 class="text-center">Important Links</h2>
+
+                    <h2 class="text-center">Faculty</h2>
                     <table class="text-center" id="left-table">
                         <tbody>
                             <tr>
@@ -231,7 +211,6 @@
                 </div>
             </div>
         </div>
-    </div>
 </body>
 
 </html>
