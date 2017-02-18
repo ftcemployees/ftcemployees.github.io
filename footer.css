@@ -1,0 +1,30 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 80px;
+}
+
+#weather {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 120px;
+    width: 100%;
+    background-color: black;
+    font-size: 16pt;
+    color: white;
+}
+
+#weather img {
+    height: 100px;
+    float: left;
+    margin-right: -30px;
+    overflow: hidden;
+}
+
+#weather div {
+    float: none;
+}
