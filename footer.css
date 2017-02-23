@@ -1,6 +1,4 @@
-html {}
-
-body {
+    body {
     display: flex;
     flex-direction: column;
 }
@@ -10,24 +8,17 @@ body {
     bottom: 0;
     width: 100%;
     background-color: #2A2C30;
-    font-size: 16pt;
+    font-size: 1.5em;
     color: white;
-    padding: 15px 0px 10px 25px
+    padding: 0.1%;
 }
 
 #weather img {
-    height: 100px;
+    height: 5em;
     float: left;
-    margin-right: -30px;
-    overflow: hidden;
 }
 
 #weather div {
     display: inline-block;
     width: 20%;
-    padding: 10px;
-    /*
-    border: solid 2px white;
-    border-radius: 5px;
-*/
-}
+    padding: 1%;
