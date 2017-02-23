@@ -1,21 +1,18 @@
-html {
-    position: relative;
-    min-height: 100%;
-}
+html {}
 
 body {
-    margin-bottom: 80px;
+    display: flex;
+    flex-direction: column;
 }
 
 #weather {
-    position: absolute;
-    left: 0;
+    position: fixed;
     bottom: 0;
-    height: 120px;
     width: 100%;
-    background-color: black;
+    background-color: #2A2C30;
     font-size: 16pt;
     color: white;
+    padding: 15px 0px 10px 25px
 }
 
 #weather img {
@@ -26,5 +23,11 @@ body {
 }
 
 #weather div {
-    float: none;
+    display: inline-block;
+    width: 20%;
+    padding: 10px;
+    /*
+    border: solid 2px white;
+    border-radius: 5px;
+*/
 }

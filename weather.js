@@ -22,13 +22,13 @@ $(document).ready(function () {
                 '<div>' +
                 '<img src="' + weather.forecast[1].image + '"/>' +
                 '<p>' +
-                'Tommorow' +
+                'Tomorrow' +
                 '<br>' +
                 weather.forecast[1].high +
                 '&deg;' +
                 weather.units.temp +
                 '<br>' +
-                weather.forecast[1].currently +
+                weather.forecast[1].text +
                 '</p></div>';
 
             $("#weather").html(today + tomorrow);
