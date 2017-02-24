@@ -75,7 +75,17 @@ function getWeather() {
                 weather.forecast[1].text +
                 '</p></div>';
 
-            $("#weather").html(today + tomorrow);
+            var datomorrow =
+                '<div>' +
+                '<img src="live-pics/Tornado.png"' +
+                '<p>Day After Tomorrow' +
+                '<br>' +
+                '200&deg;F' +
+                '<br>' +
+                'Devastation' +
+                '</p></div>';
+
+            $("#weather").html(today + tomorrow + datomorrow);
         },
         error: function (error) {
             $("#weather").html('<p>' + error + '</p>');
