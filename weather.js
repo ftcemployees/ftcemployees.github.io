@@ -80,7 +80,7 @@ function getWeather() {
                 '<img src="live-pics/Tornado.png"' +
                 '<p>Day After Tomorrow' +
                 '<br>' +
-                '200&deg;F' +
+                '-200&deg;F' +
                 '<br>' +
                 'Devastation' +
                 '</p></div>';
