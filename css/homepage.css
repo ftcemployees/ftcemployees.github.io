@@ -1,25 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Merriweather|Open+Sans');
 
-body::-webkit-scrollbar {
-    display: none;
-}
-
-
-h1, h2, h3, h4 {
-  font-family: 'Merriweather', serif;
-}
-
-p, a {
-  font-family: 'Open Sans', sans-serif;
-}
-
-body {
-  font-family: 'Open Sans', sans-serif;
-  margin-bottom: 1%;
-}
 
 .banner {
-  background-image: url('live-pics/pic1.jpg');
+  background-image: url('../live-pics/pic1.jpg');
   background-size:contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -35,53 +18,45 @@ body {
   padding: 20px;
 
 }
-
+/*
 .info h1 {
   color: #fff;
 
-}
+}*/
 
 
-.navbar {
-border-radius: 0;
-}
-
-.navbar img {
-    width: 300px;
-}
 
 
-.card-header {
+/*.card-header {
   background-color: #0076B6;
   height: 40px;
   color: #fff;
+}*/
 
-}
-
-.card-header h5 {
+/*.card-header h5 {
   line-height: 40px;
   margin-left: 10px;
   font-size: 20px;
   color: #fff;
-}
+}*/
 
 #dropdowns {
   min-width: 536px;
 }
 
 
-    .empty-space {
+    /*.empty-space {
         width: 10px;
-    }
+    }*/
 
 
-    .clkd {
+    /*.clkd {
         background-color: #08C6F3;
-    }
-
+    }*/
+/*
     a.btn {
         color: black;
-    }
+    }*/
 
 
     .flex-parent {

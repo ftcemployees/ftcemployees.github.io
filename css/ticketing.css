@@ -1,0 +1,20 @@
+.clkd {
+    background-color: #08C6F3;
+}
+
+.flex-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-row button, .flex-row div button {
+    flex-grow: 1;
+    margin: 0px;
+}
+
+.flex-row div {
+    display: flex;
+    flex-grow: 1;
+}
