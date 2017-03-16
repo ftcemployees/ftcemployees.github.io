@@ -77,12 +77,15 @@ function getWeather() {
 
             var datomorrow =
                 '<div>' +
-                '<img src="live-pics/Tornado.png"' +
-                '<p>Day After Tomorrow' +
+                '<img src="' + weather.forecast[2].image + '"/>' +
+                '<p>' +
+                'Day After Tomorrow' +
                 '<br>' +
-                '-200&deg;F' +
+                weather.forecast[2].high +
+                '&deg;' +
+                weather.units.temp +
                 '<br>' +
-                'Devastation' +
+                weather.forecast[2].text +
                 '</p></div>';
 
             $("#weather").html(today + tomorrow + datomorrow);
