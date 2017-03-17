@@ -76,13 +76,12 @@ function handleSignoutClick(event) {
  * @param {string} message Text to be placed in pre element.
  */
 function displayReminder(name, time, location, when) {
-    console.log(name);
-    console.log(name);
     $("#reminderModal").modal('show');
+    $("#audio").play();
     $("#table-content").append('<tr><td>' + name + '</td><td>' + location + '</td><td>' + time + '</td></tr>');
     setTimeout(function () {
         $("#reminderModal").modal('hide');
-    }, 10 * 1000);
+    }, 15 * 1000);
 }
 /**
  * Print the summary and start datetime/date of the next ten events in
