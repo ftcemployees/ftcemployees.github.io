@@ -123,5 +123,8 @@ function listUpcomingEvents() {
                 }
             }
         }
+        else {
+            console.log("No events");
+        }
     });
 }
