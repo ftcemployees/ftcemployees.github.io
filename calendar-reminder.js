@@ -48,6 +48,7 @@ function updateSigninStatus(isSignedIn) {
         authorizeButton.style.display = 'none';
         signoutButton.style.display = 'block';
         listUpcomingEvents();
+        console.log("Breakpoint 1");
     } else {
         $('#authModal').modal('show');
         authorizeButton.style.display = 'block';
@@ -76,10 +77,12 @@ function handleSignoutClick(event) {
  * @param {string} message Text to be placed in pre element.
  */
 function displayReminder(name, time, location, when) {
-    console.log("Breakpoint 1");
+    console.log("Breakpoint 4");
     $("#reminderModal").modal('show');
+    console.log("Breakpoint 5");
     var audio = document.getElementById("audio");
     audio.play();
+    console.log("Breakpoint 6");
     $("#table-content").append('<tr><td>' + name + '</td><td>' + location + '</td><td>' + time + '</td></tr>');
     setTimeout(function () {
         $("#reminderModal").modal('hide');
@@ -91,6 +94,7 @@ function displayReminder(name, time, location, when) {
  * appropriate message is printed.
  */
 function listUpcomingEvents() {
+    console.log("Breakpoint 2");
     gapi.client.calendar.events.list({
         'calendarId': 'colinjensen12@gmail.com',
         /*drqvdjk1hfjnjc52uc4olu47pg@group.calendar.google.com',*/
@@ -102,6 +106,7 @@ function listUpcomingEvents() {
         'orderBy': 'startTime'
     }).then(function (response) {
         var events = response.result.items;
+        console.log("Breakpoint 3");
         if (events.length > 0) {
             for (i = 0; i < events.length; i++) {
                 var event = events[i];
