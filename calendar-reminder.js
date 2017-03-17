@@ -77,7 +77,8 @@ function handleSignoutClick(event) {
  */
 function displayReminder(name, time, location, when) {
     $("#reminderModal").modal('show');
-    $("#audio").play();
+    var audio = $("#audio");
+    audio.play();
     $("#table-content").append('<tr><td>' + name + '</td><td>' + location + '</td><td>' + time + '</td></tr>');
     setTimeout(function () {
         $("#reminderModal").modal('hide');
