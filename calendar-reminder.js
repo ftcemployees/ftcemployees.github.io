@@ -106,7 +106,7 @@ function listUpcomingEvents() {
         'orderBy': 'startTime'
     }).then(function (response) {
         var events = response.result.items;
-        console.log("Breakpoint 3" + events);
+        console.log(events);
         if (events.length > 0) {
             console.log("Breakpoint 3.5");
             for (i = 0; i < events.length; i++) {
