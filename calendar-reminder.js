@@ -106,8 +106,8 @@ function listUpcomingEvents() {
         'orderBy': 'startTime'
     }).then(function (response) {
         var events = response.result.items;
-        console.log("Breakpoint 3");
         if (events.length > 0) {
+            console.log("Breakpoint 3");
             for (i = 0; i < events.length; i++) {
                 var event = events[i];
                 var rawTime = event.start.dateTime;
