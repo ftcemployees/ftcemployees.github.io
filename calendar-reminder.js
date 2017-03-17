@@ -43,7 +43,6 @@ function initClient() {
  *  appropriately. After a sign-in, the API is called.
  */
 function updateSigninStatus(isSignedIn) {
-    console.log("Breakpoint 1");
     if (isSignedIn) {
         $('#authModal').modal('hide');
         authorizeButton.style.display = 'none';
@@ -77,6 +76,7 @@ function handleSignoutClick(event) {
  * @param {string} message Text to be placed in pre element.
  */
 function displayReminder(name, time, location, when) {
+    console.log("Breakpoint 1");
     $("#reminderModal").modal('show');
     var audio = document.getElementById("audio");
     audio.play();
