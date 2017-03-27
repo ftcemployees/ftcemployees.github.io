@@ -99,8 +99,8 @@ function listUpcomingEvents() {
     console.log("Breakpoint 2");
     gapi.client.calendar.events.list({
         'calendarId': 'ilearntraining@gmail.com',
-        'timeMin': (new Date()).toISOString(),
-        'timeMax': (new Date(new Date().getTime() + 60 * 60 * 1000)).toISOString()
+        'timeMin': (new Date()).toISOString()
+            //        'timeMax': (new Date(new Date().getTime() + 60 * 60 * 1000)).toISOString()
             //        'showDeleted': false,
             //        'singleEvents': true,
             //        'maxResults': 10,
