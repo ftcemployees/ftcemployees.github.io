@@ -1,3 +1,5 @@
+"use strict";
+
 // Client ID and API key from the Developer Console
 var CLIENT_ID = '940763317903-3ci2q0rf6266ckfchredmjaiubc8onjg.apps.googleusercontent.com';
 
