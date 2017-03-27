@@ -97,6 +97,7 @@ function displayReminder(name, time, location, when) {
  */
 function listUpcomingEvents() {
     console.log("Breakpoint 2");
+    console.log(new Date(new Date().getTime() + 60 * 60 * 1000))
     gapi.client.calendar.events.list({
         'calendarId': 'ilearntraining@gmail.com',
         'timeMin': (new Date()).toISOString()
