@@ -111,7 +111,7 @@ function listUpcomingEvents() {
         console.log(response);
         if (events.length > 0) {
             console.log("Breakpoint 3.5");
-            for (i = 0; i < events.length; i++) {
+            for (var i = 0; i < events.length; i++) {
                 var event = events[i];
                 var rawTime = event.start.dateTime;
                 var hours = parseInt(rawTime.slice(11, 13));
