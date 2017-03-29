@@ -53,7 +53,8 @@ function getWeather() {
                 '<div>' +
                 '<img src="' + weather.image + '"/>' +
                 '<p>' +
-                'Today' +
+                new Date().toDateString().slice(0, 4) +
+                new Date().getUTCDate() +
                 '<br>' +
                 weather.temp +
                 '&deg;' +
@@ -66,7 +67,8 @@ function getWeather() {
                 '<div>' +
                 '<img src="' + weather.forecast[1].image + '"/>' +
                 '<p>' +
-                'Tomorrow' +
+                new Date(new Date().getTime() + 24 * 60 * 60 * 1000).toDateString().slice(0, 4) +
+                new Date(new Date().getTime() + 24 * 60 * 60 * 1000).getUTCDate() +
                 '<br>' +
                 weather.forecast[1].high +
                 '&deg;' +
@@ -79,7 +81,8 @@ function getWeather() {
                 '<div>' +
                 '<img src="' + weather.forecast[2].image + '"/>' +
                 '<p>' +
-                'Day After Tomorrow' +
+                new Date(new Date().getTime() + 48 * 60 * 60 * 1000).toString().slice(0, 4) +
+                new Date(new Date().getTime() + 48 * 60 * 60 * 1000).getUTCDate() +
                 '<br>' +
                 weather.forecast[2].high +
                 '&deg;' +
