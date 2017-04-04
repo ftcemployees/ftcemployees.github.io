@@ -3,12 +3,13 @@
 
 .banner {
   background-image: url('../live-pics/pic1.jpg');
-  background-size:contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: 400px;
+  height: 500px;
   display: flex;
   min-width: 536px;
+  margin: 0;
 }
 
 .info {
@@ -42,6 +43,7 @@
 
 #dropdowns {
   min-width: 536px;
+  margin: 2% 10%;
 }
 
 
