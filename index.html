@@ -24,7 +24,7 @@
             <li class="active"><a href="index.html">Home</a></li>
             <li><a href="ticketing.html">Ticketing</a></li>
             <li><a href="issue-routing.html">Issue Routing</a></li>
-            <li><a href="weekly-log.html">Weekly Log</a></li>
+            <li><a href="weekly-log.html">Weekly Brief</a></li>
           </ul>
         </div>
       </nav>
@@ -35,8 +35,8 @@
           <div class="banner">
           </div>
           </a>
-
-              <section id="dropdowns">
+          <div class="row" id="dropdowns">
+            <div class="col-lg-4">
               <button id="FTCLinksButton" class="btn btn-primary btn-block collapseBtn" data-toggle="collapse" data-target="#FTCLinks">FTC Team Daily Links</button>
               <div id="FTCLinks" class="collapse">
                 <div class="flex-parent">
@@ -84,7 +84,9 @@
                   </div>
                 </div>
               </div>
-              <button class="btn btn-primary btn-block collapseBtn" data-toggle="collapse" data-target="#FTCPrograms">Program Links</button>
+            </div>
+            <div class="col-lg-4">
+              <button id="programLinksButton" class="btn btn-primary btn-block collapseBtn" data-toggle="collapse" data-target="#FTCPrograms">Program Links</button>
               <div class="collapse" id="FTCPrograms">
                 <div class="flex-parent">
                   <div class="flex-child">
@@ -125,8 +127,9 @@
                   </div>
                 </div>
               </div>
-
-              <button class="btn btn-primary btn-block collapseBtn" data-toggle="collapse" data-target="#OtherLinks">Other Links</button>
+            </div>
+            <div class="col-lg-4">
+              <button id="otherLinksButton" class="btn btn-primary btn-block collapseBtn" data-toggle="collapse" data-target="#OtherLinks">Other Links</button>
               <div class="collapse" id="OtherLinks">
                 <div class="flex-parent">
                   <div class="flex-child">
@@ -161,11 +164,14 @@
                   </div>
                 </div>
               </div>
-            </section>
+            </div>
+            </div>
             <script>
 
             $(document).ready(function () {
               $("#FTCLinksButton").click();
+              $("#programLinksButton").click();
+              $("#otherLinksButton").click();
             });
 </script>
 
