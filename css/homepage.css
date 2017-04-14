@@ -43,7 +43,7 @@
 
 #dropdowns {
   min-width: 536px;
-  margin: 2% 10%;
+  margin: 2% 0px;;
 }
 
 
@@ -78,7 +78,7 @@
     }
 
     .flex-child span.glyphicon {
-      font-size: 2em;
+      font-size: 1.5em;
     }
 
     .flex-child a {
