@@ -69,8 +69,9 @@
     }
 
     .flex-child {
-      font-size: 1.5em;
+      font-size: 1.2em;
       margin: 2% 5%;
+      padding-top: 15px;
       width: 15%;
       justify-content: center;
       align-content: center;
