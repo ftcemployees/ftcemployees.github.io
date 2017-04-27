@@ -14,11 +14,10 @@ buildAppSelect($q);
 function buildAppSelect($cat) {
     $query = "SELECT * FROM `applications` WHERE `CatId` = $cat";
     $info = queryDatabase($query);
-    echo '<div class="form-group"> 
-            <select class="form-control">';
+    echo '<select id="appSelect" class="form-control" onchange="showRatings(this.value)"><option>Select Application</option>';
     foreach($info as $row) {
         $item = $row["Application"];
-        $val = $row["AppId"];
+        $val = $row["AppID"];
         echo "<option value='$val'>$item</option>";
     }
     echo "</select></div>";

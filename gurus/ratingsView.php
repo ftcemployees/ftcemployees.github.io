@@ -27,11 +27,26 @@ require_once "func/functions.php"
                     </div>
                     <div class="col-md-3"></div>
                 </div>
-            </div>
-            <div class="row">
-                <?php buildCatSelect() ?>
-            </div>
-            <div class="row" id="txtHint">
+                <div class="padding"></div>
+                <div class="row">
+                    <div class="col-md-5"><?php buildCatSelect() ?></div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5" id="txtHint"></div>
+                </div>
+                <div class="row">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Application</th>
+                                <th>Rating</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </body>
