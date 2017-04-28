@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: mando0975
+ * User: Bryan Muller
  * Date: 4/27/2017
  * Time: 12:36 PM
  */
@@ -28,10 +28,34 @@ require_once "func/functions.php"
                     <div class="col-md-3"></div>
                 </div>
                 <div class="padding"></div>
+
+                <?php
+                /******
+                 * Here begins the creation of the Guru's ratings table.
+                 * Brief overview, we are going to build two drop-down select
+                 * menus that are built using data from the database, the first is
+                 * for the application categories, the second is for the application
+                 */
+                ?>
                 <div class="row">
-                    <div class="col-md-5"><?php buildCatSelect() ?></div>
+                    <div class="col-md-5"><?php
+                        // see documentation in func/functions.php
+                        buildCatSelect()
+
+                        /**
+                         * some comments on workflow here...
+                         * buildCatSelect builds a select menu that looks like this
+                         * <select id="catSelect" class="form-control" onchange="showApplication(this.value)">
+                         * the onchange attribute calls show application, which will fill the div.id="appSelectDiv"
+                         * with another select menu for applications. This one will look like this:
+                         * <select id="appSelect" class="form-control" onchange="showRatings(this.value)">
+                         * showRatings is similar to showApplications, but instead of building a select menu,
+                         * it prints table rows within div.id="rateTable"
+                         */
+
+                        ?></div>
                     <div class="col-md-2"></div>
-                    <div class="col-md-5" id="txtHint"></div>
+                    <div class="col-md-5" id="appSelectDiv"><!-- Filled by showApplication --></div>
                 </div>
                 <div class="row">
                     <table class="table table-hover">
@@ -40,10 +64,11 @@ require_once "func/functions.php"
                                 <th>Name</th>
                                 <th>Application</th>
                                 <th>Rating</th>
+                                <th>Certified</th>
                             </tr>
                         </thead>
-                        <tbody>
-
+                        <tbody id="rateTable">
+                            <!--Filled by showRatings-->
                         </tbody>
                     </table>
                 </div>

@@ -1,10 +1,25 @@
 /**
- * Created by mando0975 on 4/27/2017.
+ * Created by Bryan Muller on 4/27/2017.
+ */
+
+
+/**
+ * Both of these functions are based on the example here
+ * https://www.w3schools.com/php/php_ajax_php.asp
+ */
+
+/**
+ * showApplications is used to update the Application dropdown select
+ * when a new category is selected in the category select menu.
+ * It does this by making an ajax call to func/getapps.php
+ * It will place the html returned by the php file in whichever
+ * element has the id appSelect.
+ * @param str -> the ID of the category that was selected
  */
 function showApplication(str) {
     console.log("launching apps");
     if (str == "") {
-        document.getElementById("txtHint").innerHTML = "";
+        document.getElementById("appSelectDiv").innerHTML = "";
         return;
     } else {
         if (window.XMLHttpRequest) {
@@ -16,7 +31,7 @@ function showApplication(str) {
         }
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("txtHint").innerHTML = this.responseText;
+                document.getElementById("appSelectDiv").innerHTML = this.responseText;
             }
         };
         xmlhttp.open("GET","func/getapps.php?q="+str,true);
@@ -25,11 +40,16 @@ function showApplication(str) {
 }
 
 
+/**
+ * This function uses Ajax to update the table of guru ratings when a new application
+ * is selected. It is similar to showApplications()
+ * @param str -> the id of the selected application
+ */
 function showRatings(str) {
     console.log("launching Ratings");
     if (str == "") {
         console.log("empty");
-        document.getElementById("table").innerHTML = "";
+        document.getElementById("rateTable").innerHTML = "";
         return;
     } else {
         if (window.XMLHttpRequest) {
@@ -41,7 +61,7 @@ function showRatings(str) {
         }
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("table").innerHTML = this.responseText;
+                document.getElementById("rateTable").innerHTML = this.responseText;
             }
         };
         xmlhttp.open("GET","func/getratings.php?q="+str,true);

@@ -8,12 +8,22 @@
 
 require_once "databaseConnections.php";
 
+//grab the category that was selected
 $q = intval($_GET['q']);
 buildAppSelect($q);
 
+
+/**
+ * buildAppSelect builds a select menu populated by applications from the database
+ *
+ * @param $cat -> the category of applications we are querying.
+ */
 function buildAppSelect($cat) {
-    $query = "SELECT * FROM `applications` WHERE `CatId` = $cat";
+    $query = "SELECT `AppID`, `Application`  FROM `applications` WHERE `CatId` = $cat";
+    // see func/databaseConnections.php for documentation on queryDatabase
     $info = queryDatabase($query);
+    echo '<div class="form-group">';
+    echo "<label for='appSelect'>Select Application</label>";
     echo '<select id="appSelect" class="form-control" onchange="showRatings(this.value)"><option>Select Application</option>';
     foreach($info as $row) {
         $item = $row["Application"];
