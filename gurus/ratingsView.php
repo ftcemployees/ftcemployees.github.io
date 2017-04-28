@@ -14,7 +14,7 @@ require_once "func/functions.php"
     <head>
         <?php require_once "../partials/head.html"; ?>
         <link rel="stylesheet" href="css/ratingsStyle.css" type="text/css">
-        <script type="text/javascript" src="js/scripts.js"></script>
+        <script type="text/javascript" src="js/ajaxScripts.js"></script>
     </head>
     <body>
         <?php require_once "../partials/nav.html"?>

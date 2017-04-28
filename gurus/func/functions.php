@@ -13,7 +13,7 @@ require_once "databaseConnections.php";
  * from the gururatings->categories table.
  * This select menu has an id of catSelect, and calls the showApplication() function
  * when the item is changed.
- * see documentation for showApplication() in js/scripts.js
+ * see documentation for showApplication() in js/ajaxScripts.js
  */
 function buildCatSelect() {
     // for docmuentation on queryDatabase() see databaseConnections.php
