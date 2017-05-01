@@ -22,7 +22,7 @@
         <div class="well">
             <h1>Employee Information</h1>
             <div class="row">
-                <input type="text" id="search" onkeyup="search('search','empTable')" placeholder="Search for employee">
+                <input type="text" id="search" class="form-control" onkeyup="search('search','empTable')" placeholder="Search for employee">
             </div>
             <div class="row">
                 <table class="table table-hover" id="empTable">

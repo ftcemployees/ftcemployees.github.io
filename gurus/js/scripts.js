@@ -4,7 +4,7 @@
 
 function search(inp, tab) {
     var input, filter, table, tr, td, i;
-    input = document.getElementbyId(inp);
+    input = document.getElementById(inp);
     filter = input.value.toUpperCase();
     table = document.getElementById(tab);
     tr = table.getElementsByTagName("tr");
