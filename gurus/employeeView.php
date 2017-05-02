@@ -6,25 +6,25 @@
  * Time: 10:43 AM
  */
 
-    require_once "func/databaseConnections.php";
-    require_once "func/functions.php";
+    require_once "gurus/func/databaseConnections.php";
+    require_once "gurus/func/functions.php";
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-        <?php require_once "../partials/head.html"; ?>
-        <link href="css/employeeStyle.css" rel="stylesheet" type="text/css">
-        <script type="text/javascript" src="js/scripts.js"></script>
+        <?php require_once "partials/head.html"; ?>
+        <link href="gurus/css/employeeStyle.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="gurus/js/scripts.js"></script>
 </head>
 <body>
-    <?php require_once "../partials/nav.html";?>
+    <?php require_once "partials/nav.php";?>
     <div class="container">
         <div class="well">
             <h1>Employee Information</h1>
             <div class="row">
                 <input type="text" id="search" class="form-control" onkeyup="search('search','empTable')" placeholder="Search for employee">
             </div>
-            <div class="row">
+            <div class="row table-responsive">
                 <table class="table table-hover" id="empTable">
                     <thead>
                         <tr class="header">
@@ -45,7 +45,7 @@
                                 $assign = $row["Assignment"];
 
                                 echo "<tr>";
-                                echo "<td>$name</td>";
+                                echo "<td class='item1'>$name</td>";
                                 echo "<td>$phone</td>";
                                 echo "<td>$email</td>";
                                 echo "<td>$assign</td>";

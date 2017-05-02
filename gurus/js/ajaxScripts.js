@@ -34,7 +34,7 @@ function showApplication(str) {
                 document.getElementById("appSelectDiv").innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET","func/getapps.php?q="+str,true);
+        xmlhttp.open("GET","gurus/func/getapps.php?q="+str,true);
         xmlhttp.send();
     }
 }
@@ -64,7 +64,7 @@ function showRatings(str) {
                 document.getElementById("rateTable").innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET","func/getratings.php?q="+str,true);
+        xmlhttp.open("GET","gurus/func/getratings.php?q="+str,true);
         xmlhttp.send();
     }
 }

@@ -3,32 +3,12 @@
 
 <head>
     <title>FTC Employees | Home</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/global.css" />
+    <?php require_once "partials/head.html"; ?>
     <link rel="stylesheet" type="text/css" href="css/homepage.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-
-
 </head>
 
 <body>
-      <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a href="#"><img alt="FTC logo" src="assets/FTC-Logo.svg"/></a>
-          </div>
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html">Home</a></li>
-            <li><a href="ticketing.html">Ticketing</a></li>
-            <li><a href="issue-routing.html">Issue Routing</a></li>
-            <li><a href="weekly-log.html">Weekly Brief</a></li>
-            <li><a href="gurus/ratingsView.php">Guru's Ratings</a></li>
-          </ul>
-        </div>
-      </nav>
+      <?php require_once "partials/nav.php"; ?>
 
         <div class="container-fluid">
 

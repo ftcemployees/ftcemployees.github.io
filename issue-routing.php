@@ -3,34 +3,13 @@
 
 <head>
     <title>FTC Employees | Home</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="ticketingScript.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link href="css/global.css" rel="stylesheet" />
+    <?php require_once "partials/head.html"?>
     <link href="css/issue-routing.css" rel="stylesheet"  />
 </head>
 
 <body>
 
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a href="#"><img alt="FTC logo" src="assets/FTC-Logo.svg"/></a>
-      </div>
-      <ul class="nav navbar-nav">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="ticketing.html">Ticketing</a></li>
-        <li class="active"><a href="issue-routing.html">Issue Routing</a></li>
-        <li><a href="weekly-log.html">Weekly Brief</a></li>
-          <li><a href="../gurus/ratingsView.php">Guru's Ratings</a></li>
-      </ul>
-    </div>
-  </nav>
+<?php require_once "partials/nav.php"?>
     <div class="container" id="outermost">
 
 

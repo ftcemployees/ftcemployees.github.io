@@ -65,16 +65,17 @@ function updateDatabase($query) {
 
         // echo a message to say the UPDATE succeeded
         echo '<script>';
-        echo "console.log($stmt->rowCount());";
+        $rcount= $stmt->rowCount();
+        echo "console.log($rcount);";
         echo "console.log('rows updated');";
         echo '</script>';
         $conn = null;
-        return true;
+        return $stmt->rowCount();
     }
     catch(PDOException $e)
     {
         echo $sql . "<br>" . $e->getMessage();
     }
-    return false;
+    return 0;
     $conn = null;
 }

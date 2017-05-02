@@ -25,3 +25,7 @@ border-radius: 0;
 .navbar img {
     width: 300px;
 }
+
+.navbar-right {
+    float: right;
+}
