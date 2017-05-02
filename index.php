@@ -12,7 +12,7 @@
 
         <div class="container-fluid">
 
-          <a href="flscrn_announce.html" >
+          <a href="staticPages/flscrn_announce.html" >
           <div class="banner">
           </div>
           </a>

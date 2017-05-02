@@ -5,19 +5,20 @@
  * Date: 4/27/2017
  * Time: 12:36 PM
  */
-require_once "gurus/func/databaseConnections.php";
-require_once "gurus/func/functions.php"
+require_once "../partials/logVal.php";
+require_once "func/databaseConnections.php";
+require_once "func/functions.php"
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
-        <?php require_once "partials/head.html"; ?>
+        <?php require_once "../partials/head.html"; ?>
         <link rel="stylesheet" href="gurus/css/ratingsStyle.css" type="text/css">
         <script type="text/javascript" src="gurus/js/ajaxScripts.js"></script>
     </head>
     <body>
-        <?php require_once "partials/nav.php" ?>
+        <?php require_once "../partials/nav.php" ?>
         <div class="container">
             <div class="well">
                 <div class="row">

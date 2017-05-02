@@ -5,19 +5,20 @@
  * Date: 4/28/2017
  * Time: 10:43 AM
  */
+    require_once "../partials/logVal.php";
+    require_once "func/databaseConnections.php";
+    require_once "func/functions.php";
 
-    require_once "gurus/func/databaseConnections.php";
-    require_once "gurus/func/functions.php";
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-        <?php require_once "partials/head.html"; ?>
+        <?php require_once "../partials/head.html"; ?>
         <link href="gurus/css/employeeStyle.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" src="gurus/js/scripts.js"></script>
 </head>
 <body>
-    <?php require_once "partials/nav.php";?>
+    <?php require_once "../partials/nav.php";?>
     <div class="container">
         <div class="well">
             <h1>Employee Information</h1>

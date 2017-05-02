@@ -54,8 +54,10 @@ if (isset($_POST['username']) and isset($_POST['password'])){
     if ($count == 1){
         $_SESSION['username'] = $username;
         $_SESSION['name'] = $result[0]["First Name"];
+        $_SESSION['logon'] = true;
     }else{
 //3.1.3 If the login credentials doesn't match, he will be shown with an error message.
+        echo '<h4 style="text-align: center;">Invalid username or password, please try again</h4>';
         $fmsg = "Invalid Login Credentials.";
     }
 }
