@@ -23,6 +23,7 @@
         <div class="well">
             <h1>Employee Information</h1>
             <div class="row">
+<!--                searches the table by using a javascript function-->
                 <input type="text" id="search" class="form-control" onkeyup="search('search','empTable')" placeholder="Search for employee">
             </div>
             <div class="row table-responsive">
@@ -37,7 +38,8 @@
                     </thead>
                     <tbody id="empTabBod">
                         <?php
-
+                            // grap a list of all the employees from the database
+                            // and populate the table
                             $emps = getEmployees();
                             foreach($emps as $row) {
                                 $name = $row["Full Name"];

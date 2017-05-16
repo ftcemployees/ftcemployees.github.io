@@ -38,20 +38,24 @@
 
 
 
-<?php  //Start the Session
+<?php
+//Start the Session
 //3. If the form is submitted or not.
 //3.1 If the form is submitted
 if (isset($_POST['username']) and isset($_POST['password'])){
 //3.1.1 Assigning posted values to variables.
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+    $password =  filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+    // $hashed = password_hash($password, PASSWORD_DEFAULT);
+
 //3.1.2 Checking the values are existing in the database or not
-    $query = "SELECT * FROM `employee_info` WHERE `Username` = '$username' AND `Password` = '$password'";
+    $query = "SELECT `Username`, `Password`, `First Name` FROM `employee_info` WHERE `Username` = '$username'";
 
     $result = queryDatabase($query);
     $count = updateDatabase($query);
+
 //3.1.2 If the posted values are equal to the database values, then session will be created for the user.
-    if ($count == 1){
+    if ($count == 1 && password_verify($password, $result[0]["Password"])){
         $_SESSION['username'] = $username;
         $_SESSION['name'] = $result[0]["First Name"];
         $_SESSION['logon'] = true;
@@ -61,11 +65,10 @@ if (isset($_POST['username']) and isset($_POST['password'])){
         $fmsg = "Invalid Login Credentials.";
     }
 }
-//3.1.4 if the user is logged in Greets the user with message
+//3.1.4 if the user is redirected to the homepage
 if (isset($_SESSION['username'])){
     header("Location: index.php");
 }else {
-//3.2 When the user visits the page first time, simple login form will be displayed.
+//3.2 do nothing
 }
 ?>
-

@@ -2,6 +2,13 @@
  * Created by Mando0975 on 4/28/2017.
  */
 
+
+/**
+ * a function that filters a table based on a given input
+ *
+ * @param inp -> the item being searched for
+ * @param tab -> the table being filtered
+ */
 function search(inp, tab) {
     var input, filter, table, tr, td, i;
     input = document.getElementById(inp);
