@@ -7,9 +7,15 @@
  */
 
 require_once "databaseConnections.php";
+$q = filter_input(INPUT_GET, 'q', FILTER_SANITIZE_NUMBER_INT);
+$t = filter_input(INPUT_GET, 't', FILTER_SANITIZE_NUMBER_INT);
 
-$q = intval($_GET['q']);
-buildRatingsTable($q);
+if ($t) {
+  buildRatingsEditor($q);
+} else {
+  buildRatingsTable($q);
+}
+
 
 /**
  * This function grabs all the guru ratings for a certain application,
@@ -21,6 +27,9 @@ function buildRatingsTable($app) {
     $query = "SELECT `Full Name`, `Rating`, `Application`, `Certified` FROM `gururatings` WHERE `AppId` = $app ORDER BY `Rating` DESC";
     // see func/databaseConnections.php for documentation on queryDatabase
     $info = queryDatabase($query);
+    if(!isset($info)){
+      return;
+    }
     foreach($info as $row) {
         $name = $row["Full Name"];
         $rating = $row["Rating"];
@@ -37,4 +46,38 @@ function buildRatingsTable($app) {
         }
         echo '</tr>';
     }
+}
+
+function buildRatingsEditor($cat)
+{
+  session_start();
+  $i = 0;
+  $id = $_SESSION['id'];
+  $_SESSION['updateCat'] = $cat;
+  $query = "SELECT `Application`, `Rating`, `Certified` FROM `gururatings` WHERE `CatId` = $cat AND `EmpId` = $id ORDER By `Application`";
+  $info = queryDatabase($query);
+  if(!isset($info)){
+    return;
+  }
+  foreach ($info as $row) {
+    $rating = $row["Rating"];
+    $application = $row["Application"];
+    $cert = $row["Certified"];
+    $_POST['cat'] = $cat;
+    echo '<tr>';
+    echo "<td><strong>$application</strong></td>";
+    echo "<td>$rating</td>";
+    echo "<td>
+          <input type='text' value='0' class='form-control' name='$application' id='$application' onkeyup='validRating(this.id, $i)'>
+          <span style='color:red; visibility: hidden' id='$i'>Please enter a number between 1 and 10</span>
+          </td>";
+    if ($cert) {
+      echo "<td class='cert' style='text-align: center;'><span class='glyphicon glyphicon-ok'></span></td>";
+    } else {
+      echo "<td class='cert' style='text-align: center;'><span class='glyphicon glyphicon-remove'></span></td>";
+    }
+    echo '</tr>';
+    $i++;
+  }
+  echo '<button class="btn btn-primary" type="submit" id="sub" disabled>Update</button>';
 }

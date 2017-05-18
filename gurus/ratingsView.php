@@ -7,7 +7,7 @@
  */
 require_once "../partials/logVal.php";
 require_once "func/databaseConnections.php";
-require_once "func/functions.php"
+require_once "func/functions.php";
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +26,7 @@ require_once "func/functions.php"
                     <div class="col-md-6" id="header">
                         <h1>FTC Guru's Ratings</h1>
                     </div>
-                    <div class="col-md-3"></div>
+                    <div class="col-md-3"><a id="edit" role="button" class="btn btn-primary btn-sm" href="gurus/editRatings.php">Edit my ratings</a></div>
                 </div>
                 <div class="padding"></div>
 
@@ -39,9 +39,10 @@ require_once "func/functions.php"
                  */
                 ?>
                 <div class="row">
+
                     <div class="col-md-5"><?php
                         // see documentation in func/functions.php
-                        buildCatSelect()
+                        buildCatSelect("table")
 
                         /**
                          * some comments on workflow here...

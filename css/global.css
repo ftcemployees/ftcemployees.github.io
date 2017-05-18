@@ -29,3 +29,10 @@ border-radius: 0;
 .navbar-right {
     float: right;
 }
+
+
+@media (min-width:200px) {
+  .nav.navbar-nav.pull-right {
+    float: left !important;
+  }
+}

@@ -49,16 +49,18 @@ if (isset($_POST['username']) and isset($_POST['password'])){
     // $hashed = password_hash($password, PASSWORD_DEFAULT);
 
 //3.1.2 Checking the values are existing in the database or not
-    $query = "SELECT `Username`, `Password`, `First Name` FROM `employee_info` WHERE `Username` = '$username'";
+//    $query = "SELECT `Username`, `Password`, `First Name` FROM `employee_info` WHERE `Username` = '$username'";
 
-    $result = queryDatabase($query);
-    $count = updateDatabase($query);
+    $result = loginUser($username, RESULTS);
+    $count = loginUser($username, ROW_COUNT);
 
 //3.1.2 If the posted values are equal to the database values, then session will be created for the user.
     if ($count == 1 && password_verify($password, $result[0]["Password"])){
         $_SESSION['username'] = $username;
         $_SESSION['name'] = $result[0]["First Name"];
         $_SESSION['logon'] = true;
+        $_SESSION['id'] = $result[0]["ID"];
+        $_SESSION['admin'] = $result[0]['Admin'];
     }else{
 //3.1.3 If the login credentials doesn't match, he will be shown with an error message.
         echo '<h4 style="text-align: center;">Invalid username or password, please try again</h4>';

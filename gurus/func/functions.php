@@ -15,19 +15,25 @@ require_once "databaseConnections.php";
  * when the item is changed.
  * see documentation for showApplication() in js/ajaxScripts.js
  */
-function buildCatSelect() {
-    // for docmuentation on queryDatabase() see databaseConnections.php
-    $info = queryDatabase("SELECT * FROM `catagories` WHERE 1");
-    echo '<div class="form-group"> 
-            <label for="catSelect">Select Category</label>
-            <select id="catSelect" class="form-control" onchange="showApplication(this.value)">
-            <option>Select A Category</option>';
-    foreach($info as $row) {
-        $item = $row["Category"];
-        $val = $row["CatId"];
-        echo "<option value='$val'>$item</option>";
-    }
-    echo "</select></div>";
+function buildCatSelect($i) {
+  // for docmuentation on queryDatabase() see databaseConnections.php
+  $info = queryDatabase("SELECT * FROM `catagories` WHERE 1");
+  echo '<div class="form-group"> 
+            <label for="catSelect">Select Category</label>';
+  if($i == "view") {
+    echo '<select id="catSelect" class="form-control" onchange="showApplication(this.value)">';
+  } elseif ($i =="edit") {
+    echo '<select id="catSelect" class="form-control" onchange="showEditor(this.value)">';
+  } else {
+    echo '<select id="catSelect" class="form-control" onchange="showApplication(this.value)">';
+  }
+  echo '<option>Select A Category</option>';
+  foreach ($info as $row) {
+    $item = $row["Category"];
+    $val = $row["CatId"];
+    echo "<option value='$val'>$item</option>";
+  }
+  echo "</select></div>";
 }
 
 
@@ -37,7 +43,7 @@ function buildCatSelect() {
  * @return array
  */
 function getCategories() {
-    return queryDatabase("SELECT * FROM `catagories` WHERE 1");
+  return queryDatabase("SELECT * FROM `catagories` WHERE 1");
 }
 
 /**
@@ -46,7 +52,7 @@ function getCategories() {
  * @return array
  */
 function getApplications() {
-    return queryDatabase("SELECT * FROM `applications` WHERE 1");
+  return queryDatabase("SELECT * FROM `applications` WHERE 1");
 }
 
 
@@ -56,5 +62,5 @@ function getApplications() {
  * @return array
  */
 function getEmployees() {
-    return queryDatabase("SELECT * FROM `employee_info` WHERE 1");
+  return queryDatabase("SELECT * FROM `employee_info` WHERE 1");
 }

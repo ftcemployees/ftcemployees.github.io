@@ -12,11 +12,11 @@ require_once "databaseConnections.php";
 $q = intval($_GET['q']);
 buildAppSelect($q);
 
-
 /**
  * buildAppSelect builds a select menu populated by applications from the database
  *
  * @param $cat -> the category of applications we are querying.
+ * @param $i -> The value that needs to get added to the onclick attribute
  */
 function buildAppSelect($cat) {
     $query = "SELECT `AppID`, `Application`  FROM `applications` WHERE `CatId` = $cat";
@@ -31,4 +31,11 @@ function buildAppSelect($cat) {
         echo "<option value='$val'>$item</option>";
     }
     echo "</select></div>";
+}
+
+function buildRatingEditor($cat) {
+  $query = "SELECT `AppID`, `Application`  FROM `applications` WHERE `CatId` = $cat";
+  // see func/databaseConnections.php for documentation on queryDatabase
+  $info = queryDatabase($query);
+
 }

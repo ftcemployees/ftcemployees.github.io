@@ -17,26 +17,26 @@
  * @param str -> the ID of the category that was selected
  */
 function showApplication(str) {
-    console.log("launching apps");
-    if (str == "") {
-        document.getElementById("appSelectDiv").innerHTML = "";
-        return;
-    } else {
-        if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
-        } else {
-            // code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("appSelectDiv").innerHTML = this.responseText;
-            }
-        };
-        xmlhttp.open("GET","gurus/func/getapps.php?q="+str,true);
-        xmlhttp.send();
-    }
+   console.log("launching apps");
+   if (str == "") {
+      document.getElementById("appSelectDiv").innerHTML = "";
+      return;
+   } else {
+      if (window.XMLHttpRequest) {
+         // code for IE7+, Firefox, Chrome, Opera, Safari
+         xmlhttp = new XMLHttpRequest();
+      } else {
+         // code for IE6, IE5
+         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+      }
+      xmlhttp.onreadystatechange = function () {
+         if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("appSelectDiv").innerHTML = this.responseText;
+         }
+      };
+      xmlhttp.open("GET", "gurus/func/getapps.php?q=" + str, true);
+      xmlhttp.send();
+   }
 }
 
 
@@ -46,25 +46,49 @@ function showApplication(str) {
  * @param str -> the id of the selected application
  */
 function showRatings(str) {
-    console.log("launching Ratings");
-    if (str == "") {
-        console.log("empty");
-        document.getElementById("rateTable").innerHTML = "";
-        return;
-    } else {
-        if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
-        } else {
-            // code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("rateTable").innerHTML = this.responseText;
-            }
-        };
-        xmlhttp.open("GET","gurus/func/getratings.php?q="+str,true);
-        xmlhttp.send();
-    }
+   console.log("launching Ratings");
+   if (str == "") {
+      console.log("empty");
+      document.getElementById("rateTable").innerHTML = "";
+      return;
+   } else {
+      if (window.XMLHttpRequest) {
+         // code for IE7+, Firefox, Chrome, Opera, Safari
+         xmlhttp = new XMLHttpRequest();
+      } else {
+         // code for IE6, IE5
+         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+      }
+      xmlhttp.onreadystatechange = function () {
+         if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("rateTable").innerHTML = this.responseText;
+         }
+      };
+      xmlhttp.open("GET", "gurus/func/getratings.php?q=" + str + "&t=0", true);
+      xmlhttp.send();
+   }
+}
+
+function showEditor(str) {
+
+   console.log("launching editor");
+   if (str == "") {
+      console.log('empty');
+      document.getElementById("editTable").innerHTML = "";
+   } else {
+      if (window.XMLHttpRequest) {
+         xmlhttp = new XMLHttpRequest();
+      } else {
+         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+      }
+      xmlhttp.onreadystatechange = function () {
+         if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("editTable").innerHTML = this.responseText;
+            document.getElementById("sub").disabled = true;
+         }
+      };
+      xmlhttp.open("GET", "gurus/func/getratings.php?q=" + str + "&t=1", true);
+      xmlhttp.send();
+   }
+
 }

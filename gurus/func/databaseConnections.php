@@ -16,13 +16,22 @@
  * the guru_ratings database.
  * @param $query -> pass in the SQL query you wish to execute
  * @return array -> returns an array of the database responses
+ *
  */
-function queryDatabase($query) {
-    $servername = "ftcemp";
-    $username = "bryan";
-    $password = "bryan";
-    $dbname = "guru_ratings";
 
+define("ROW_COUNT", 1);
+define("RESULTS", 2);
+define("SERVERNAME", "ftcemp");
+define("USERNAME", "bryan");
+define("PASSWORD", "bryan");
+define("DBNAME", "guru_ratings");
+
+function queryDatabase($query) {
+
+    $servername = SERVERNAME;
+    $username = USERNAME;
+    $password =  PASSWORD;
+    $dbname = DBNAME;
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -33,7 +42,7 @@ function queryDatabase($query) {
         return $result;
     }
     catch(PDOException $e) {
-        echo "Error: " . $e->getMessage();
+      echo "<script>console.log(Error: " . $e->getMessage() . "/);</script>";
     }
     $conn = null;
 }
@@ -45,10 +54,10 @@ function queryDatabase($query) {
  * @return bool -> returns true if update successful, false if an error occurred.
  */
 function updateDatabase($query) {
-    $servername = "ftcemp";
-    $username = "bryan";
-    $password = "bryan";
-    $dbname = "guru_ratings";
+    $servername = SERVERNAME;
+    $username = USERNAME;
+    $password =  PASSWORD;
+    $dbname = DBNAME;
 
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -74,8 +83,86 @@ function updateDatabase($query) {
     }
     catch(PDOException $e)
     {
-        echo $sql . "<br>" . $e->getMessage();
+      echo "<script>console.log(Error: " . $e->getMessage() . "/);</script>";
     }
     return 0;
     $conn = null;
+}
+
+
+/**
+ * The function that logs in the user. It can have three return types based
+ * on the queryType provided. quryTypes should be constants that are defined at the
+ * beginning of this file.
+ * @param $user -> the username we will be fetching
+ * @param $queryType -> an int that defines the return type
+ * @return array|int|null
+ */
+function loginUser($user, $queryType) {
+    $servername = SERVERNAME;
+    $username = USERNAME;
+    $password =  PASSWORD;
+    $dbname = DBNAME;
+
+    try {
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $query = "SELECT `ID`, `Username`, `Password`, `First Name`, `Admin` FROM `employee_info` WHERE `Username` = :username";
+        $stmt = $conn->prepare($query);
+        $stmt->bindValue(':username', $user, PDO::PARAM_STR);
+        $stmt->execute();
+        $conn = null;
+        if ($queryType == ROW_COUNT) {
+            return $stmt->rowCount();
+        } elseif ($queryType == RESULTS) {
+            return $stmt->fetchAll();
+        } else {
+            return null;
+        }
+    }
+    catch(PDOException $e) {
+      echo "<script>console.log(Error: " . $e->getMessage() . "/);</script>";
+    }
+    $conn = null;
+}
+
+
+/**
+ * @param $first
+ * @param $last
+ * @param $user
+ * @param $phone
+ * @param $email
+ * @return int
+ */
+function updateEmpInfo($first, $last, $user, $phone, $email) {
+    $servername = SERVERNAME;
+    $username = USERNAME;
+    $password =  PASSWORD;
+    $dbname = DBNAME;
+
+    $full = $first . " " . $last;
+    $id = $_SESSION["id"];
+    try {
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $query = "UPDATE `employee_info` SET `First Name`=:first,`Last Name`=:last,`Phone Number`=:phone,`Email`=:email,`Full Name`=:full,`Username`=:username WHERE `ID` = :id";
+        $stmt = $conn->prepare($query);
+        $stmt->bindValue(':first', $first, PDO::PARAM_STR);
+        $stmt->bindValue(':last', $last, PDO::PARAM_STR);
+        $stmt->bindValue(':phone', $phone, PDO::PARAM_STR);
+        $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+        $stmt->bindValue(':full', $full, PDO::PARAM_STR);
+        $stmt->bindValue(':username', $user, PDO::PARAM_STR);
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $conn = null;
+        return $stmt->rowCount();
+    } catch(PDOException $e) {
+      echo "<script>console.log(Error: " . $e->getMessage() . "/);</script>";
+    }
+}
+
+function updateRatings() {
+
 }
