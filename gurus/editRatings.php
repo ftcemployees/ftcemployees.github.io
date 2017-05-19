@@ -66,10 +66,10 @@ require_once "func/functions.php";
           <table class="table table-hover">
             <thead>
             <tr>
-              <th>Application</th>
-              <th>Previous Rating</th>
-              <th>New Rating</th>
-              <th style="text-align: center">Certification Status</th>
+              <th class="col-md-3">Application</th>
+              <th class="col-md-3">Previous Rating</th>
+              <th class="col-md-3">New Rating</th>
+              <th style="text-align: center" class="col-md-3">Certification Status</th>
             </tr>
             </thead>
             <tbody id="editTable">

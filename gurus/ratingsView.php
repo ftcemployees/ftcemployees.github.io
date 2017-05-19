@@ -26,7 +26,7 @@ require_once "func/functions.php";
                     <div class="col-md-6" id="header">
                         <h1>FTC Guru's Ratings</h1>
                     </div>
-                    <div class="col-md-3"><a id="edit" role="button" class="btn btn-primary btn-sm" href="gurus/editRatings.php">Edit my ratings</a></div>
+                    <div class="col-md-3"></div>
                 </div>
                 <div class="padding"></div>
 
@@ -56,17 +56,20 @@ require_once "func/functions.php";
                          */
 
                         ?></div>
-                    <div class="col-md-2"></div>
+
                     <div class="col-md-5" id="appSelectDiv"><!-- Filled by showApplication --></div>
+                  <div class="col-md-2">
+                    <a id="edit" role="button" class="btn btn-primary" href="gurus/editRatings.php">Edit my ratings</a>
+                  </div>
                 </div>
                 <div class="row">
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Application</th>
-                                <th>Rating</th>
-                                <th>Certified</th>
+                                <th class="col-md-3">Name</th>
+                                <th class="col-md-3">Application</th>
+                                <th class="col-md-3">Rating</th>
+                                <th class="col-md-3" style="text-align: center">Certified</th>
                             </tr>
                         </thead>
                         <tbody id="rateTable">

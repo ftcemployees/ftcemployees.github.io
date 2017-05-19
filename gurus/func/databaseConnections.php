@@ -163,6 +163,24 @@ function updateEmpInfo($first, $last, $user, $phone, $email) {
     }
 }
 
-function updateRatings() {
-
+function pushRatings($appId, $rating, $empId) {
+  $servername = SERVERNAME;
+  $username = USERNAME;
+  $password =  PASSWORD;
+  $dbname = DBNAME;
+  try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $query = "UPDATE `gururatings` SET `Rating`= :rating WHERE `AppId` = :appId AND `EmpId` = :empId";
+    $stmt = $conn->prepare($query);
+    $stmt->bindValue(':rating', $rating, PDO::PARAM_INT);
+    $stmt->bindValue(':appId', $appId, PDO::PARAM_INT);
+    $stmt->bindValue(':empId', $empId, PDO::PARAM_INT);
+    $stmt->execute();
+    $conn = null;
+    $rows = $stmt->rowCount();
+    return $stmt->rowCount();
+  } catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+  }
 }

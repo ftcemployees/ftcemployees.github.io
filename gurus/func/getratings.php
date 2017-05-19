@@ -24,7 +24,7 @@ if ($t) {
  * @param $app -> the id of the application ratings we are grabbing
  */
 function buildRatingsTable($app) {
-    $query = "SELECT `Full Name`, `Rating`, `Application`, `Certified` FROM `gururatings` WHERE `AppId` = $app ORDER BY `Rating` DESC";
+    $query = "SELECT gururatings.`Full Name`, gururatings.`Rating`, gururatings.`Application`, gururatings.`Certified` FROM `gururatings` INNER JOIN employee_info ON gururatings.EmpId=employee_info.ID WHERE gururatings.AppId = $app AND employee_info.Active = 1 ORDER BY `Rating` DESC";
     // see func/databaseConnections.php for documentation on queryDatabase
     $info = queryDatabase($query);
     if(!isset($info)){
@@ -37,8 +37,9 @@ function buildRatingsTable($app) {
         $cert = $row["Certified"];
         echo '<tr>';
         echo "<td>$name</td>";
-        echo "<td>$rating</td>";
         echo "<td>$application</td>";
+        echo "<td>$rating</td>";
+
         if ($cert) {
             echo "<td class='cert'><span class='glyphicon glyphicon-ok'></span></td>";
         } else {
@@ -54,7 +55,7 @@ function buildRatingsEditor($cat)
   $i = 0;
   $id = $_SESSION['id'];
   $_SESSION['updateCat'] = $cat;
-  $query = "SELECT `Application`, `Rating`, `Certified` FROM `gururatings` WHERE `CatId` = $cat AND `EmpId` = $id ORDER By `Application`";
+  $query = "SELECT `Application`, `Rating`, `Certified`, `AppId` FROM `gururatings` WHERE `CatId` = $cat AND `EmpId` = $id ORDER By `Application`";
   $info = queryDatabase($query);
   if(!isset($info)){
     return;
@@ -62,13 +63,14 @@ function buildRatingsEditor($cat)
   foreach ($info as $row) {
     $rating = $row["Rating"];
     $application = $row["Application"];
+    $appId = $row["AppId"];
     $cert = $row["Certified"];
     $_POST['cat'] = $cat;
     echo '<tr>';
     echo "<td><strong>$application</strong></td>";
     echo "<td>$rating</td>";
     echo "<td>
-          <input type='text' value='0' class='form-control' name='$application' id='$application' onkeyup='validRating(this.id, $i)'>
+          <input type='number' value='$rating' class='form-control' name='$appId' id='$application' onkeyup='validRating(this.id, $i)'>
           <span style='color:red; visibility: hidden' id='$i'>Please enter a number between 1 and 10</span>
           </td>";
     if ($cert) {
