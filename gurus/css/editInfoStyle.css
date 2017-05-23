@@ -1,3 +1,48 @@
 .row {
   margin-top: 2%;
 }
+
+
+h2 {
+  text-align: center;
+  border-bottom: solid 1px #d3d3d3;
+  margin-bottom: 2%;
+  padding-bottom: 1%;
+  font-size: 3em;
+}
+
+.inputs  {
+  width: 100%;
+}
+
+
+
+@media (min-width: 768px) {
+  .form-inline .form-control {
+    width: 100%;
+  }
+}
+
+label {
+  font-size: larger;
+}
+
+.form-control {
+  font-size: larger;
+  border: none;
+  background-color: inherit;
+  border-bottom: solid 1px #e3e3e3;
+  border-radius: 0;
+}
+
+.form-control[disabled] {
+  background-color: inherit;
+}
+
+.btn {
+  font-size: 1.3em;
+}
+
+#updatebtns {
+
+}
