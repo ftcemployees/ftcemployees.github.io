@@ -20,14 +20,17 @@
 <body>
     <?php require_once "../partials/nav.php";?>
     <div class="container">
-        <div class="well">
             <h1>Employee Information</h1>
             <div class="row">
 <!--                searches the table by using a javascript function-->
-                <input type="text" id="search" class="form-control" onkeyup="search('search','empTable')" placeholder="Search for employee">
+                <div class="input-group">
+                  <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-search"></span></span>
+                  <input type="text" id="search" class="form-control" onkeyup="search('search','empTable')" placeholder="Search for employee">
+                </div>
+
             </div>
             <div class="row table-responsive">
-                <table class="table table-hover" id="empTable">
+                <table class="table table-responsive" id="empTable">
                     <thead>
                         <tr class="header">
                             <th>Name</th>
@@ -52,12 +55,12 @@
                                 echo "<td>$phone</td>";
                                 echo "<td>$email</td>";
                                 echo "<td>$assign</td>";
+                                echo "</tr>";
                             }
                         ?>
                     </tbody>
                 </table>
             </div>
-        </div>
     </div>
 </body>
 </html>

@@ -20,7 +20,6 @@ require_once "func/functions.php";
     <body>
         <?php require_once "../partials/nav.php" ?>
         <div class="container">
-            <div class="well">
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-md-6" id="header">
@@ -63,7 +62,7 @@ require_once "func/functions.php";
                   </div>
                 </div>
                 <div class="row">
-                    <table class="table table-hover">
+                    <table class="table table-responsive">
                         <thead>
                             <tr>
                                 <th class="col-md-3">Name</th>
@@ -78,6 +77,5 @@ require_once "func/functions.php";
                     </table>
                 </div>
             </div>
-        </div>
     </body>
 </html>
