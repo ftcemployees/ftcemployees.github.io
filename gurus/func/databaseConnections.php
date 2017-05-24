@@ -184,3 +184,24 @@ function pushRatings($appId, $rating, $empId) {
     echo "Error: " . $e->getMessage();
   }
 }
+
+
+function updatePassword($newPwd, $empId) {
+  $servername = SERVERNAME;
+  $username = USERNAME;
+  $password =  PASSWORD;
+  $dbname = DBNAME;
+  try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $query = "UPDATE `employee_info` SET `Password`= :newPwd WHERE `ID` = :id";
+    $stmt = $conn->prepare($query);
+    $stmt->bindValue(':newPwd', $newPwd, PDO::PARAM_STR);
+    $stmt->bindValue(':id', $empId);
+    $stmt->execute();
+    $conn = null;
+    return $stmt->rowCount();
+  } catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+  }
+}

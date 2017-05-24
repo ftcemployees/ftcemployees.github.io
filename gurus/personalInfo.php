@@ -62,7 +62,8 @@ $userInfo = $dataInfo[0];
         <div class="col-sm-2"></div>
         <div class="col-sm-10">
                     <span class="form-group btn-group pull-right">
-            <button class="btn btn-primary" id="edit" onmouseup="editInfo()">Edit Information</button>
+            <button class="btn btn-primary" id="edit" onmouseup="editInfo()">Edit Info
+            </button><a role="button" class="btn btn-primary" id="pwd" href="gurus/func/changePwdView.php">Change Password</a>
             <button disabled class="btn btn-primary" type="submit" id="update">Update Info</button>
             <button disabled class="btn btn-info" type="reset" id="cancel" onclick="disableEdit()">Cancel</button>
           </span>

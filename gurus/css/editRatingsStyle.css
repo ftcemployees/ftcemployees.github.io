@@ -1,11 +1,3 @@
-#header {
-  text-align: center;
-}
-
-.well {
-  background-color: #d3d3d3;
-}
-
 .padding {
   margin: 3%;
 }
@@ -28,4 +20,35 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+#header {
+  text-align: center;
+  border-bottom: solid 1px #d3d3d3;
+  margin-bottom: 2%;
+  padding-bottom: 1%;
+}
+
+.well {
+  background-color: #eeeeee;
+}
+
+.padding {
+  margin: 3%;
+}
+
+.cert {
+  text-align: center;
+}
+
+#edit {
+  margin-top: 17%;
+}
+
+td, th {
+  font-size: 1.4em;
+}
+
+tr:nth-child(even){
+  background-color: #dae0eb;
 }

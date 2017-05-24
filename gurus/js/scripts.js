@@ -71,3 +71,7 @@ function disableEdit() {
    }
    document.getElementById('infoForm').reset();
 }
+
+function enableCatEdit(id) {
+   document.getElementById(id).disabled = false;
+}

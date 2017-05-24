@@ -63,7 +63,7 @@ require_once "func/functions.php";
         </div>
         <div class="row">
           <form action="gurus/func/updateRatings.php" method="post">
-          <table class="table table-hover">
+          <table class="table table-responsive">
             <thead>
             <tr>
               <th class="col-md-3">Application</th>
