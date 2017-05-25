@@ -54,7 +54,7 @@ require_once "../func/functions.php";
           }
           ?>
           <br>
-          <button class="btn btn-primary" onclick="">Update Categories</button>
+          <button class="btn btn-primary" id="updateCat" onclick="">Update Categories</button>
         </div>
         <div class="col-sm-6 form-group form-inline">
           <input type="text" name="newCat" id="newCat" class="form-control">

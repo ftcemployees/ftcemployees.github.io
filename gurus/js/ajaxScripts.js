@@ -93,11 +93,13 @@ function showEditor(str) {
 
 }
 
-
+/**
+*
+**/
 function showAdminEditor(str) {
    console.log("launching apps");
    if (str == "") {
-      document.getElementById("appSelectDiv").innerHTML = "";
+      document.getElementById("appEdit").innerHTML = "";
       return;
    } else {
       if (window.XMLHttpRequest) {
@@ -113,6 +115,32 @@ function showAdminEditor(str) {
          }
       };
       xmlhttp.open("GET", "gurus/func/getapps.php?q=" + str + "&t=1", true);
+      xmlhttp.send();
+   }
+}
+
+function updateApps(str) {
+   console.log("launching apps");
+   if (str == "") {
+      console.log("empty");
+      document.getElementById("updateAppMsg").innerHTML = "";
+      return;
+   } else {
+      if (window.XMLHttpRequest) {
+         // code for IE7+, Firefox, Chrome, Opera, Safari
+         xmlhttp = new XMLHttpRequest();
+      } else {
+         // code for IE6, IE5
+         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+      }
+      xmlhttp.onreadystatechange = function () {
+         if (this.readyState == 4 && this.status == 200) {
+           console.log(this.responseText);
+            document.getElementById("updateAppMsg").innerHTML = this.responseText;
+         }
+      };
+      console.log("opening");
+      xmlhttp.open("POST", "gurus/func/updateApps.php?q=" + str, true);
       xmlhttp.send();
    }
 }

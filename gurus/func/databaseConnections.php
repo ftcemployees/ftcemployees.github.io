@@ -209,6 +209,29 @@ function pushRatings($appId, $rating, $empId) {
 }
 
 
+function pushAppUpdate($id, $name) {
+  $servername = SERVERNAME;
+  $username = USERNAME;
+  $password =  PASSWORD;
+  $dbname = DBNAME;
+  echo $id . '<br />' . $name . '<br />';
+  // try {
+  //   $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+  //   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  //   $query = "UPDATE `applications` SET `Application`= :app WHERE `AppID` = :appId";
+  //   $stmt = $conn->prepare($query);
+  //   $stmt->bindValue(':app', $name, PDO::PARAM_STR);
+  //   $stmt->bindValue(':appId', $id, PDO::PARAM_INT);
+  //   $stmt->execute();
+  //   $conn = null;
+  //   $rows = $stmt->rowCount();
+  //   return $stmt->rowCount();
+  // } catch (PDOException $e) {
+  //   echo "Error: " . $e->getMessage();
+  // }
+}
+
+
 function updatePassword($newPwd, $empId) {
   $servername = SERVERNAME;
   $username = USERNAME;
