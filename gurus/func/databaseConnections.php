@@ -48,6 +48,29 @@ function queryDatabase($query) {
 }
 
 
+function getAppSelect($cat) {
+  $servername = SERVERNAME;
+  $username = USERNAME;
+  $password =  PASSWORD;
+  $dbname = DBNAME;
+  try {
+      $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $query = "SELECT `AppID`, `Application`  FROM `applications` WHERE `CatId` = :cat";
+      $stmt = $conn->prepare($query);
+      $stmt->bindValue(":cat", $cat, PDO::PARAM_INT);
+      $stmt->execute();
+      $result = $stmt->fetchAll();
+      $conn = null;
+      return $result;
+  }
+  catch(PDOException $e) {
+    echo "<script>console.log(Error: " . $e->getMessage() . "/);</script>";
+  }
+  $conn = null;
+}
+
+
 /**
  * a function that allows you to easily update a table in the database
  * @param $query -> the update query you wish to execute

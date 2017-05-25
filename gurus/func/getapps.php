@@ -10,7 +10,19 @@ require_once "databaseConnections.php";
 
 //grab the category that was selected
 $q = intval($_GET['q']);
-buildAppSelect($q);
+if(isset($_GET['t'])){
+  $t = intval($_GET['t']);
+}
+if(isset($t)){
+  if($t == 0) {
+    buildAppSelect($q);
+  } elseif($t == 1) {
+    buildAdminEditor($q);
+  }
+} else {
+  buildAppSelect($q);
+}
+
 
 /**
  * buildAppSelect builds a select menu populated by applications from the database
@@ -19,9 +31,9 @@ buildAppSelect($q);
  * @param $i -> The value that needs to get added to the onclick attribute
  */
 function buildAppSelect($cat) {
-    $query = "SELECT `AppID`, `Application`  FROM `applications` WHERE `CatId` = $cat";
+    // $query = "SELECT `AppID`, `Application`  FROM `applications` WHERE `CatId` = $cat";
     // see func/databaseConnections.php for documentation on queryDatabase
-    $info = queryDatabase($query);
+    $info = getAppSelect($cat);
     echo '<div class="form-group">';
     echo "<label for='appSelect'>Select Application</label>";
     echo '<select id="appSelect" class="form-control" onchange="showRatings(this.value)"><option>Select Application</option>';
@@ -34,8 +46,23 @@ function buildAppSelect($cat) {
 }
 
 function buildRatingEditor($cat) {
-  $query = "SELECT `AppID`, `Application`  FROM `applications` WHERE `CatId` = $cat";
+  // $query = "SELECT `AppID`, `Application`  FROM `applications` WHERE `CatId` = $cat";
   // see func/databaseConnections.php for documentation on queryDatabase
-  $info = queryDatabase($query);
+  // $info = queryDatabase($query);
+  $info = buildAdminEditor($cat);
+}
 
+function buildAdminEditor($cat) {
+  $info = getAppSelect($cat);
+  $i=0;
+  foreach($info as $row) {
+    $tempId = $row["AppID"];
+    $app = $row["Application"];
+    echo "<div class='input-group'>";
+    echo "<span class='input-group-addon' data-toggle='tooltip' title='Click to edit' onclick='enableCatEdit(\"$tempId\")'><i class='glyphicon glyphicon-edit'></i></span>";
+    echo "<input type='text' class='form-control' value='$app' id='$tempId' disabled>";
+    echo "</div>";
+    $i++;
+  }
+  echo "<br /><button type='button' class='btn btn-primary' onclick=''>Upadate Apps</button>";
 }

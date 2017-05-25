@@ -18,12 +18,16 @@ require_once "databaseConnections.php";
 function buildCatSelect($i) {
   // for docmuentation on queryDatabase() see databaseConnections.php
   $info = queryDatabase("SELECT * FROM `catagories` WHERE 1");
-  echo '<div class="form-group"> 
+  echo '<div class="form-group">
             <label for="catSelect">Select Category</label>';
   if($i == "view") {
     echo '<select id="catSelect" class="form-control" onchange="showApplication(this.value)">';
   } elseif ($i =="edit") {
     echo '<select id="catSelect" class="form-control" onchange="showEditor(this.value)">';
+  } elseif ($i == "adminEdit") {
+    echo '<select id="catSelect" class="form-control" onchange="showAdminEditor(this.value)">';
+  } elseif($i == "adminAdd") {
+    echo '<select id="catSelect" class="form-control">';
   } else {
     echo '<select id="catSelect" class="form-control" onchange="showApplication(this.value)">';
   }

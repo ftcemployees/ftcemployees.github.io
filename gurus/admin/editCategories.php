@@ -17,6 +17,12 @@ require_once "../func/functions.php";
   <head>
     <?php require_once "../../partials/head.html"; ?>
     <script type="text/javascript" src="gurus/js/scripts.js"></script>
+    <script type="text/javascript" src="gurus/js/ajaxScripts.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+      });
+    </script>
   </head>
   <body>
     <?php require_once "../../partials/nav.php"; ?>
@@ -37,10 +43,11 @@ require_once "../func/functions.php";
           $i=0;
           foreach($cats as $row) {
             $cat = $row["Category"];
-            $tempId = "eCat" . $i;
+            // $tempId = "eCat" . $i;
+            $tempId = $row["CatId"];
 //            echo $tempId;
             echo '<div class="input-group">';
-            echo "<span class='input-group-addon' onclick='enableCatEdit(\"$tempId\")'><i class='glyphicon glyphicon-edit'></i></span>";
+            echo "<span class='input-group-addon' data-toggle='tooltip' title='Click to edit' onclick='enableCatEdit(\"$tempId\")'><i class='glyphicon glyphicon-edit'></i></span>";
             echo "<input type='text' class='form-control' value='$cat' id='$tempId' disabled>";
             echo "</div>";
             $i++;
@@ -61,14 +68,15 @@ require_once "../func/functions.php";
       <div class="row">
         <div class="col-sm-6">
           <h3>Edit Applications</h3>
-
+          <?php buildCatSelect("adminEdit"); ?>
         </div>
         <div class="col-sm-6">
           <h3>Add Guru Application</h3>
+          <?php buildCatSelect("adminAdd"); ?>
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-6" id="appEdit">
         </div>
         <div class="col-sm-6 form-group form-inline">
           <input type="text" name="newApp" id="newApp" class="form-control">
