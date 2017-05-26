@@ -4,10 +4,12 @@ require_once "../../partials/logVal.php";
 require_once "../func/databaseConnections.php";
 require_once "../func/functions.php";
 
+
 if(isset($_GET['t'])) {
 
   $t = filter_var($_GET['t'], FILTER_SANITIZE_NUMBER_INT);
 }
+
 
 if(isset($t)) {
   if($t == 0){

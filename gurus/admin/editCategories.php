@@ -73,7 +73,6 @@ require_once "../func/functions.php";
     <section id="edit">
       <div class="row">
         <div class="col-sm-6">
-          <form id="appEditorForm">
             <div id='updateAppMsg'>
 
             </div>

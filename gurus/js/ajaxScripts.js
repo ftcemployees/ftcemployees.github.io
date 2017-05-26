@@ -146,7 +146,7 @@ function updateApps(str) {
       var params = buildParams('appEdit');
 
       console.log("opening");
-      xmlhttp.open("POST", "gurus/func/updateApps.php?q=" + str + "t=0", true);
+      xmlhttp.open("POST", "gurus/func/updateApps.php?q=" + str + "&t=0", true);
 
       xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
       xmlhttp.send(params);
@@ -205,7 +205,7 @@ function addCategory() {
   var params = document.getElementById("newCat").name + "=" + document.getElementById("newCat").value;
   console.log(params);
   console.log("opening");
-  xmlhttp.open("POST", "gurus/func/updateCats.php?q=" + cat, true);
+  xmlhttp.open("POST", "gurus/func/updateCats.php?q=1", true);
 
   xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
   xmlhttp.send(params);
