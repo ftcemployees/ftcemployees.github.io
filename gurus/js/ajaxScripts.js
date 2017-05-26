@@ -226,9 +226,9 @@ function addApps(){
         if (this.readyState == 4 && this.status == 200) {
           console.log(this.responseText);
            document.getElementById("addAppMsg").innerHTML = this.responseText;
-          //  setTimeout(function(){
-          //    window.location.reload(1);
-          //  }, 3000);
+           setTimeout(function(){
+             window.location.reload(1);
+           }, 3000);
         }
      };
 
