@@ -17,7 +17,7 @@ require_once "databaseConnections.php";
  */
 function buildCatSelect($i) {
   // for docmuentation on queryDatabase() see databaseConnections.php
-  $info = queryDatabase("SELECT * FROM `catagories` WHERE 1");
+  $info = queryDatabase("SELECT * FROM `categories` WHERE 1");
   echo '<div class="form-group">
             <label for="catSelect">Select Category</label>';
   if($i == "view") {
@@ -47,7 +47,7 @@ function buildCatSelect($i) {
  * @return array
  */
 function getCategories() {
-  return queryDatabase("SELECT * FROM `catagories` WHERE 1");
+  return queryDatabase("SELECT * FROM `categories` WHERE 1");
 }
 
 /**

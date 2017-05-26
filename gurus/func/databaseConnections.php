@@ -214,21 +214,42 @@ function pushAppUpdate($id, $name) {
   $username = USERNAME;
   $password =  PASSWORD;
   $dbname = DBNAME;
-  echo $id . '<br />' . $name . '<br />';
-  // try {
-  //   $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-  //   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  //   $query = "UPDATE `applications` SET `Application`= :app WHERE `AppID` = :appId";
-  //   $stmt = $conn->prepare($query);
-  //   $stmt->bindValue(':app', $name, PDO::PARAM_STR);
-  //   $stmt->bindValue(':appId', $id, PDO::PARAM_INT);
-  //   $stmt->execute();
-  //   $conn = null;
-  //   $rows = $stmt->rowCount();
-  //   return $stmt->rowCount();
-  // } catch (PDOException $e) {
-  //   echo "Error: " . $e->getMessage();
-  // }
+  try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $query = "UPDATE `applications` SET `Application`= :app WHERE `AppID` = :appId";
+    $stmt = $conn->prepare($query);
+    $stmt->bindValue(':app', $name, PDO::PARAM_STR);
+    $stmt->bindValue(':appId', $id, PDO::PARAM_INT);
+    $stmt->execute();
+    $conn = null;
+    $rows = $stmt->rowCount();
+    return $stmt->rowCount();
+  } catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+  }
+}
+
+
+function pushCatUpdate($id, $name) {
+  $servername = SERVERNAME;
+  $username = USERNAME;
+  $password =  PASSWORD;
+  $dbname = DBNAME;
+  try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $query = "UPDATE `categories` SET `Category`= :cat WHERE `CatId` = :catId";
+    $stmt = $conn->prepare($query);
+    $stmt->bindValue(':cat', $name, PDO::PARAM_STR);
+    $stmt->bindValue(':catId', $id, PDO::PARAM_INT);
+    $stmt->execute();
+    $conn = null;
+    $rows = $stmt->rowCount();
+    return $stmt->rowCount();
+  } catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+  }
 }
 
 
@@ -244,6 +265,26 @@ function updatePassword($newPwd, $empId) {
     $stmt = $conn->prepare($query);
     $stmt->bindValue(':newPwd', $newPwd, PDO::PARAM_STR);
     $stmt->bindValue(':id', $empId);
+    $stmt->execute();
+    $conn = null;
+    return $stmt->rowCount();
+  } catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+  }
+}
+
+
+function pushCatAdd($val) {
+  $servername = SERVERNAME;
+  $username = USERNAME;
+  $password =  PASSWORD;
+  $dbname = DBNAME;
+  try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $query = "INSERT INTO `categories`(`Category`) VALUES (:val)";
+    $stmt = $conn->prepare($query);
+    $stmt->bindValue(':val', $val, PDO::PARAM_STR);
     $stmt->execute();
     $conn = null;
     return $stmt->rowCount();

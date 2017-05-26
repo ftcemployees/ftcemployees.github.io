@@ -137,10 +137,92 @@ function updateApps(str) {
          if (this.readyState == 4 && this.status == 200) {
            console.log(this.responseText);
             document.getElementById("updateAppMsg").innerHTML = this.responseText;
+            setTimeout(function(){
+              window.location.reload(1);
+            }, 3000);
          }
       };
+
+      var params = buildParams('appEdit');
+
       console.log("opening");
       xmlhttp.open("POST", "gurus/func/updateApps.php?q=" + str, true);
-      xmlhttp.send();
+
+      xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+      xmlhttp.send(params);
    }
+}
+
+
+function updateCategories() {
+  console.log("updating Categories");
+  if (window.XMLHttpRequest) {
+     // code for IE7+, Firefox, Chrome, Opera, Safari
+     xmlhttp = new XMLHttpRequest();
+  } else {
+     // code for IE6, IE5
+     xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange = function () {
+     if (this.readyState == 4 && this.status == 200) {
+       console.log(this.responseText);
+        document.getElementById("updateCatMsg").innerHTML = this.responseText;
+        setTimeout(function(){
+          window.location.reload(1);
+        }, 3000);
+     }
+  };
+
+  var params = buildParams('catEdit');
+
+  console.log("opening");
+  xmlhttp.open("POST", "gurus/func/updateCats.php?q=0", true);
+
+  xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+  xmlhttp.send(params);
+}
+
+
+function addCategory() {
+  console.log("adding Categories");
+  if (window.XMLHttpRequest) {
+     // code for IE7+, Firefox, Chrome, Opera, Safari
+     xmlhttp = new XMLHttpRequest();
+  } else {
+     // code for IE6, IE5
+     xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange = function () {
+     if (this.readyState == 4 && this.status == 200) {
+       console.log(this.responseText);
+        document.getElementById("addCatResponse").innerHTML = this.responseText;
+        setTimeout(function(){
+          window.location.reload(1);
+        }, 3000);
+     }
+  };
+
+  var params = document.getElementById("newCat").name + "=" + document.getElementById("newCat").value;
+  console.log(params);
+  console.log("opening");
+  xmlhttp.open("POST", "gurus/func/updateCats.php?q=1", true);
+
+  xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+  xmlhttp.send(params);
+}
+
+
+function buildParams(className) {
+  var inputs = document.getElementsByClassName(className);
+  var keys = new Array();
+  var vals = new Array();
+  for(var i = 0; i < inputs.length; i++) {
+    keys.push(inputs[i].name);
+    vals.push(inputs[i].value);
+  }
+  var params = keys[0] + "=" + vals[0];
+  for(var i = 1; i < keys.length; i++) {
+    params += "&" + keys[i] + "=" + vals[i];
+  }
+  return params;
 }

@@ -60,10 +60,9 @@ function buildAdminEditor($cat) {
     $app = $row["Application"];
     echo "<div class='input-group'>";
     echo "<span class='input-group-addon' data-toggle='tooltip' title='Click to edit' onclick='enableCatEdit(\"$tempId\")'><i class='glyphicon glyphicon-edit'></i></span>";
-    echo "<input type='text' class='form-control' name='$tempId' value='$app' id='$tempId' disabled>";
+    echo "<input type='text' class='form-control appEdit' name='$tempId' value='$app' id='$tempId' disabled>";
     echo "</div>";
     $i++;
   }
   echo "<br /><button type='button' class='btn btn-primary' id='updateApps' onclick='updateApps($cat)'>Update Apps</button>";
-  echo '<div id="updateAppMsg"></div>';
 }

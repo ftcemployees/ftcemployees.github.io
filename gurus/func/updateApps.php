@@ -6,33 +6,27 @@ require_once "../func/functions.php";
 
 $updateCat = $_GET["q"];
 $appList = getAppSelect($updateCat);
-// foreach($appList as $row) {
-//   echo $row['AppID'];
-// }
-// $valueList = array();
-//
-// foreach($appList as $row) {
-//   $app = $row['AppID'];
-//
-//   $val = filter_input(INPUT_POST, $app, FILTER_SANITIZE_STRING);
-//   if(isset($val)) {
-//     $valueList += array($app => $val);
-//   }
-// }
-//
-// $i = 0;
-// foreach($valueList as $row) {
-//   echo $row[$i];
-// }
 
-// foreach($appList as $k => $v) {
-//   if(pushAppUpdate($k, $v)) {
-//     $success = true;
-//     echo "success!!!";
-//   }
-//   else {
-//     echo "failure";
-//   }
-// }
+$valList = array();
+foreach($appList as $row) {
+  $val = filter_var($_POST[$row["AppID"]], FILTER_SANITIZE_STRING);
+  $valList += array($row["AppID"] => $val);
+}
+
+$success = NULL;
+foreach($valList as $k => $v) {
+  if(pushAppUpdate($k, $v)) {
+    $success = true;
+  }
+}
+
+if(isset($success)) {
+  echo "<br /><div class='alert alert-success'>
+  <strong>Success!</strong> Applications updated!
+  </div>";
+} else {
+  echo "<br /><div class='alert alert-danger'>
+  <strong>Oops!</strong> Looks like something went wrong. Refresh and try again.</div>";
+}
 
  ?>

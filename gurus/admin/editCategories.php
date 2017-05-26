@@ -44,22 +44,28 @@ require_once "../func/functions.php";
           foreach($cats as $row) {
             $cat = $row["Category"];
             // $tempId = "eCat" . $i;
-            $tempId = $row["CatId"];
+            $tempId = 'cat' . $row["CatId"];
+            $name = $row["CatId"];
 //            echo $tempId;
             echo '<div class="input-group">';
             echo "<span class='input-group-addon' data-toggle='tooltip' title='Click to edit' onclick='enableCatEdit(\"$tempId\")'><i class='glyphicon glyphicon-edit'></i></span>";
-            echo "<input type='text' class='form-control' value='$cat' id='$tempId' disabled>";
+            echo "<input type='text' class='form-control catEdit' value='$cat' id='$tempId' name='$name' disabled>";
             echo "</div>";
             $i++;
           }
           ?>
           <br>
-          <button class="btn btn-primary" id="updateCat" onclick="">Update Categories</button>
+          <button class="btn btn-primary" id="updateCat" onclick="updateCategories()">Update Categories</button>
+          <div id="updateCatMsg">
+
+          </div>
         </div>
         <div class="col-sm-6 form-group form-inline">
           <input type="text" name="newCat" id="newCat" class="form-control">
-          <button type="button" id="newCatBtn" class="btn btn-primary" onclick="">Add Category</button>
+          <button type="button" id="newCatBtn" class="btn btn-primary" onclick="addCategory()">Add Category</button>
+          <div id="addCatResponse">
 
+          </div>
         </div>
       </div>
     </section>
@@ -67,10 +73,18 @@ require_once "../func/functions.php";
     <section id="edit">
       <div class="row">
         <div class="col-sm-6">
+          <form id="appEditorForm">
+            <div id='updateAppMsg'>
+
+            </div>
           <h3>Edit Applications</h3>
           <?php buildCatSelect("adminEdit"); ?>
+
         </div>
         <div class="col-sm-6">
+          <div id='addAppMsg'>
+            
+          </div>
           <h3>Add Guru Application</h3>
           <?php buildCatSelect("adminAdd"); ?>
         </div>
