@@ -83,7 +83,7 @@ require_once "../func/functions.php";
         </div>
         <div class="col-sm-6">
           <div id='addAppMsg'>
-            
+
           </div>
           <h3>Add Guru Application</h3>
           <?php buildCatSelect("adminAdd"); ?>
@@ -94,7 +94,7 @@ require_once "../func/functions.php";
         </div>
         <div class="col-sm-6 form-group form-inline">
           <input type="text" name="newApp" id="newApp" class="form-control">
-          <button type="button" id="newAppBtn" class="btn btn-primary" onclick="">Add App</button>
+          <button type="button" id="newAppBtn" class="btn btn-primary" onclick="addApps()">Add App</button>
         </div>
       </div>
     </section>

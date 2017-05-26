@@ -292,3 +292,24 @@ function pushCatAdd($val) {
     echo "Error: " . $e->getMessage();
   }
 }
+
+
+function pushAppAdd($cat, $val) {
+  $servername = SERVERNAME;
+  $username = USERNAME;
+  $password =  PASSWORD;
+  $dbname = DBNAME;
+  try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $query = "INSERT INTO `applications`(`Application`, `CatId`) VALUES (:val, :cat);";
+    $stmt = $conn->prepare($query);
+    $stmt->bindValue(':val', $val, PDO::PARAM_STR);
+    $stmt->bindValue(':cat', $cat, PDO::PARAM_INT);
+    $stmt->execute();
+    $conn = null;
+    return $stmt->rowCount();
+  } catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+  }
+}

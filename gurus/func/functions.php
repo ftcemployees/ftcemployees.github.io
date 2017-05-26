@@ -25,9 +25,9 @@ function buildCatSelect($i) {
   } elseif ($i =="edit") {
     echo '<select id="catSelect" class="form-control" onchange="showEditor(this.value)">';
   } elseif ($i == "adminEdit") {
-    echo '<select id="catSelect" class="form-control" onchange="showAdminEditor(this.value)">';
+    echo '<select id="appAdminEdit" class="form-control" onchange="showAdminEditor(this.value)">';
   } elseif($i == "adminAdd") {
-    echo '<select id="catSelect" class="form-control">';
+    echo '<select id="addAppCat" class="form-control">';
   } else {
     echo '<select id="catSelect" class="form-control" onchange="showApplication(this.value)">';
   }
