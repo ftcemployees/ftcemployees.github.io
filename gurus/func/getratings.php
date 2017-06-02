@@ -24,8 +24,7 @@ if ($t) {
  * @param $app -> the id of the application ratings we are grabbing
  */
 function buildRatingsTable($app) {
-    $query = "SELECT gururatings.`Full Name`, gururatings.`Rating`, gururatings.`Application`, gururatings.`Certified` FROM `gururatings` INNER JOIN employee_info ON gururatings.EmpId=employee_info.ID WHERE gururatings.AppId = $app AND employee_info.Active = 1 ORDER BY `Rating` DESC";
-    // see func/databaseConnections.php for documentation on queryDatabase
+    $query = "SELECT employee_info.`Full Name`, gururatings.Rating, applications.Application, gururatings.Certified FROM gururatings INNER JOIN employee_info ON gururatings.EmpId=employee_info.ID INNER JOIN applications ON gururatings.AppId = applications.AppID WHERE gururatings.AppId = $app AND employee_info.Active = 1 ORDER BY gururatings.Rating DESC";    // see func/databaseConnections.php for documentation on queryDatabase
     $info = queryDatabase($query);
     if(!isset($info)){
       return;
@@ -55,7 +54,7 @@ function buildRatingsEditor($cat)
   $i = 0;
   $id = $_SESSION['id'];
   $_SESSION['updateCat'] = $cat;
-  $query = "SELECT `Application`, `Rating`, `Certified`, `AppId` FROM `gururatings` WHERE `CatId` = $cat AND `EmpId` = $id ORDER By `Application`";
+  $query = "SELECT applications.`Application`, gururatings.`Rating`, gururatings.`Certified`, gururatings.`AppId` FROM `gururatings` INNER JOIN applications ON gururatings.AppId = applications.AppID WHERE `CatId` = $cat AND `EmpId` = $id ORDER By `Application`";
   $info = queryDatabase($query);
   if(!isset($info)){
     return;

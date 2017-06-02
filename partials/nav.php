@@ -38,7 +38,8 @@ if (!session_id()) {
                                  Admin Tools<span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="gurus/admin/editCategories.php">Edit Gurus</a></li>
+                              <li><a href="gurus/admin/editEmps.php">Edit Employees</a></li>
+                               <li><a href="gurus/admin/editGurus.php">Edit Gurus</a></li>
                             </ul>
                             </li>';
         }

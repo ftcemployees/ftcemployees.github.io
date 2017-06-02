@@ -42,9 +42,16 @@ if(isset($t)) {
   } elseif($t == 1) {
     $val = filter_var($_POST["newApp"], FILTER_SANITIZE_STRING);
     $cat = filter_var($_POST["cat"], FILTER_SANITIZE_NUMBER_INT);
+
     $success = NULL;
     if($val != ""){
-      if(pushAppAdd($cat, $val)) {
+      $id = pushAppAdd($cat, $val);
+      if($id) {
+        $empQuery = "SELECT ID FROM employee_info WHERE 1";
+        $emps = queryDatabase($empQuery);
+        foreach ($emps as $emp) {
+          addGuruApp($id, $emp["ID"]);
+        }
         $success = true;
       }
     }

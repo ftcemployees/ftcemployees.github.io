@@ -6,6 +6,7 @@
  * Time: 1:48 PM
  */
 
+
 /**
  * both of these functions are based on examples given here
  * https://www.w3schools.com/php/php_mysql_select.asp
@@ -169,7 +170,7 @@ function updateEmpInfo($first, $last, $user, $phone, $email) {
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $query = "UPDATE `employee_info` SET `First Name`=:first,`Last Name`=:last,`Phone Number`=:phone,`Email`=:email,`Full Name`=:full,`Username`=:username WHERE `ID` = :id";
+        $query = "UPDATE `employee_info` SET `First Name`=:first,`Last Name`=:last,`Phone Number`=:phone,`Email`=:email,`Full Name`=:full,`Username`=:username, `Last_Modified` = CURRENT_TIMESTAMP WHERE `ID` = :id";
         $stmt = $conn->prepare($query);
         $stmt->bindValue(':first', $first, PDO::PARAM_STR);
         $stmt->bindValue(':last', $last, PDO::PARAM_STR);
@@ -194,7 +195,7 @@ function pushRatings($appId, $rating, $empId) {
   try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $query = "UPDATE `gururatings` SET `Rating`= :rating WHERE `AppId` = :appId AND `EmpId` = :empId";
+    $query = "UPDATE `gururatings` SET `Rating`= :rating, `Last_Modified` = CURRENT_TIMESTAMP WHERE `AppId` = :appId AND `EmpId` = :empId";
     $stmt = $conn->prepare($query);
     $stmt->bindValue(':rating', $rating, PDO::PARAM_INT);
     $stmt->bindValue(':appId', $appId, PDO::PARAM_INT);
@@ -217,7 +218,7 @@ function pushAppUpdate($id, $name) {
   try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $query = "UPDATE `applications` SET `Application`= :app WHERE `AppID` = :appId";
+    $query = "UPDATE `applications` SET `Application`= :app, `Last_Modified` = CURRENT_TIMESTAMP WHERE `AppID` = :appId";
     $stmt = $conn->prepare($query);
     $stmt->bindValue(':app', $name, PDO::PARAM_STR);
     $stmt->bindValue(':appId', $id, PDO::PARAM_INT);
@@ -239,7 +240,7 @@ function pushCatUpdate($id, $name) {
   try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $query = "UPDATE `categories` SET `Category`= :cat WHERE `CatId` = :catId";
+    $query = "UPDATE `categories` SET `Category`= :cat, `Last_Modified` = CURRENT_TIMESTAMP WHERE `CatId` = :catId";
     $stmt = $conn->prepare($query);
     $stmt->bindValue(':cat', $name, PDO::PARAM_STR);
     $stmt->bindValue(':catId', $id, PDO::PARAM_INT);
@@ -261,7 +262,7 @@ function updatePassword($newPwd, $empId) {
   try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $query = "UPDATE `employee_info` SET `Password`= :newPwd WHERE `ID` = :id";
+    $query = "UPDATE `employee_info` SET `Password`= :newPwd, `Last_Modified` = CURRENT_TIMESTAMP WHERE `ID` = :id";
     $stmt = $conn->prepare($query);
     $stmt->bindValue(':newPwd', $newPwd, PDO::PARAM_STR);
     $stmt->bindValue(':id', $empId);
@@ -307,9 +308,81 @@ function pushAppAdd($cat, $val) {
     $stmt->bindValue(':val', $val, PDO::PARAM_STR);
     $stmt->bindValue(':cat', $cat, PDO::PARAM_INT);
     $stmt->execute();
-    $conn = null;
-    return $stmt->rowCount();
+    return $conn->lastInsertId();
   } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
+  }
+}
+
+
+function addGuruApp($appId, $empId) {
+  $servername = SERVERNAME;
+  $username = USERNAME;
+  $password = PASSWORD;
+  $dbname = DBNAME;
+
+  try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $query = "INSERT INTO `gururatings` (`EmpId`, `AppId`) VALUES (:emp, :app)";
+    $stmt = $conn->prepare($query);
+    $stmt->bindValue(':emp', $empId, PDO::PARAM_INT);
+    $stmt->bindValue(':app', $appId, PDO::PARAM_INT);
+    $stmt->execute();
+    $conn = null;
+  } catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+  }
+
+}
+
+function updateEmpAdmin($id, $newMail, $newTeam, $newAssign, $newActive, $newAdmin) {
+  $servername = SERVERNAME;
+  $username = USERNAME;
+  $password = PASSWORD;
+  $dbname = DBNAME;
+
+  try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
+    $query = "UPDATE `employee_info` SET `Email`= :newEmail, `Team` = :newTeam, `Assignment` = :newAssign, `Active` = :newActive, `Admin` = :newAdmin, `Last_Modified` = CURRENT_TIMESTAMP WHERE `ID` = :id";
+    $stmt = $conn->prepare($query);
+    $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+    $stmt->bindValue(':newEmail', $newMail, PDO::PARAM_STR);
+    $stmt->bindValue(':newTeam', $newTeam, PDO::PARAM_INT);
+    $stmt->bindValue(':newAssign', $newAssign, PDO::PARAM_STR);
+    $stmt->bindValue(':newActive', $newActive, PDO::PARAM_INT);
+    $stmt->bindValue(':newAdmin', $newAdmin, PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt->rowCount();
+  } catch (PDOException $e) {
+    echo "error: " . $e->getMessage();
+  }
+}
+
+
+function addEmp($fname, $lname, $email, $assign, $user, $pwd) {
+  $servername = SERVERNAME;
+  $username = USERNAME;
+  $password = PASSWORD;
+  $dbname = DBNAME;
+  $fullname = $fname . " " . $lname;
+
+  try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_SILENT);
+    $query = "INSERT INTO `employee_info` (`First Name`, `Last Name`, `Email`, `Assignment`, `Full Name`, `Username`, `Password`) VALUES (:fname, :lname, :email, :assign, :fullName, :username, :pwd)";
+    $stmt = $conn->prepare($query);
+    $stmt->bindValue(':fname', $fname, PDO::PARAM_STR);
+    $stmt->bindValue(':lname', $lname, PDO::PARAM_STR);
+    $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+    $stmt->bindValue(':assign', $assign, PDO::PARAM_STR);
+    $stmt->bindValue(':fullName', $fullname, PDO::PARAM_STR);
+    $stmt->bindValue(':username', $user, PDO::PARAM_STR);
+    $stmt->bindValue(':pwd', $pwd, PDO::PARAM_STR);
+    $stmt->execute();
+    return $conn->lastInsertId();
+  } catch (PDOException $e) {
+
   }
 }

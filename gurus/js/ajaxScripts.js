@@ -135,7 +135,6 @@ function updateApps(str) {
       }
       xmlhttp.onreadystatechange = function () {
          if (this.readyState == 4 && this.status == 200) {
-           console.log(this.responseText);
             document.getElementById("updateAppMsg").innerHTML = this.responseText;
             setTimeout(function(){
               window.location.reload(1);
@@ -165,7 +164,6 @@ function updateCategories() {
   }
   xmlhttp.onreadystatechange = function () {
      if (this.readyState == 4 && this.status == 200) {
-       console.log(this.responseText);
         document.getElementById("updateCatMsg").innerHTML = this.responseText;
         setTimeout(function(){
           window.location.reload(1);
@@ -194,7 +192,6 @@ function addCategory() {
   }
   xmlhttp.onreadystatechange = function () {
      if (this.readyState == 4 && this.status == 200) {
-       console.log(this.responseText);
         document.getElementById("addCatResponse").innerHTML = this.responseText;
         setTimeout(function(){
           window.location.reload(1);
@@ -224,10 +221,9 @@ function addApps(){
      }
      xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-          console.log(this.responseText);
            document.getElementById("addAppMsg").innerHTML = this.responseText;
            setTimeout(function(){
-             window.location.reload(1);
+              window.location.reload(1);
            }, 3000);
         }
      };
@@ -239,6 +235,72 @@ function addApps(){
 
      xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
      xmlhttp.send(params);
+}
+
+
+function updateEmp(email, id){
+   var newMail = document.getElementById(email).value;
+   var newTeam = document.getElementById(email + "Team").value;
+   var newAssign = document.getElementById(email + "Assign").value;
+   var newAdmin = document.getElementById(email + "Admin").checked;
+   var newActive = document.getElementById(email+ "Active").checked;
+
+   // console.log("mail: ", newMail, "team: ", newTeam, "assign: ", newAssign, "Admin: " , newAdmin, "Active: ", newActive);
+
+   if (window.XMLHttpRequest) {
+      // code for IE7+, Firefox, Chrome, Opera, Safari
+      xmlhttp = new XMLHttpRequest();
+   } else {
+      // code for IE6, IE5
+      xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+   }
+   xmlhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+         document.getElementById("message").innerHTML = this.responseText;
+
+      }
+   };
+
+   var params = "newMail=" + newMail + "&newTeam=" + newTeam + "&newAssign=" + newAssign + "&newAdmin=" + newAdmin + "&newActive=" + newActive + "&id=" + id;
+   params = params.trim().replace(/ /g, '%20');
+   console.log(params);
+   console.log("opening");
+   xmlhttp.open("POST", "gurus/admin/adminEmpUpdate.php?q=1", true);
+
+   xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+   xmlhttp.send(params);
+
+}
+
+function addEmp() {
+   var fname = document.getElementById('fname').value;
+   var lname = document.getElementById('lname').value;
+   var email = document.getElementById('email').value;
+   var assign = document.getElementById('assign').value;
+   var user = document.getElementById('username').value;
+   var pwd = document.getElementById('pwd').value;
+
+   if (window.XMLHttpRequest) {
+      // code for IE7+, Firefox, Chrome, Opera, Safari
+      xmlhttp = new XMLHttpRequest();
+   } else {
+      // code for IE6, IE5
+      xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+   }
+   xmlhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+         document.getElementById("message").innerHTML = this.responseText;
+
+      }
+   };
+
+   var params = "fname=" + fname + "&lname=" + lname + "&email=" + email + "&assign=" + assign + "&user=" + user + "&pwd=" + pwd;
+   params = params.trim().replace(/ /g, '%20');
+   console.log("opening");
+   xmlhttp.open("POST", "gurus/admin/adminEmpUpdate.php?q=2", true);
+
+   xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+   xmlhttp.send(params);
 }
 
 

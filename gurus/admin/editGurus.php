@@ -7,6 +7,7 @@
  */
 
 require_once "../../partials/logVal.php";
+require_once "adminVal.php";
 require_once "../func/databaseConnections.php";
 require_once "../func/functions.php";
 

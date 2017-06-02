@@ -70,6 +70,7 @@ if (isset($_POST['username']) and isset($_POST['password'])){
 //3.1.4 if the user is redirected to the homepage
 if (isset($_SESSION['username'])){
     header("Location: index.php");
+    die();
 }else {
 //3.2 do nothing
 }
