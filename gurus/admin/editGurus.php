@@ -24,6 +24,7 @@ require_once "../func/functions.php";
         $('[data-toggle="tooltip"]').tooltip();
       });
     </script>
+      <link href="gurus/css/editGurus.css" type="text/css" rel="stylesheet">
   </head>
   <body>
     <?php require_once "../../partials/nav.php"; ?>

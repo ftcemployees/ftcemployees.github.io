@@ -36,3 +36,11 @@ border-radius: 0;
     float: left !important;
   }
 }
+
+.btn {
+    border-radius: 50px;
+}
+.btn-primary {
+    background-color: #0288D1;
+
+}

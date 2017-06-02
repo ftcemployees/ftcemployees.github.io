@@ -18,8 +18,7 @@ require_once "databaseConnections.php";
 function buildCatSelect($i) {
   // for docmuentation on queryDatabase() see databaseConnections.php
   $info = queryDatabase("SELECT * FROM `categories` WHERE 1");
-  echo '<div class="form-group">
-            <label for="catSelect">Select Category</label>';
+  echo '<div class="form-group">';
   if($i == "view") {
     echo '<select id="catSelect" class="form-control" onchange="showApplication(this.value)">';
   } elseif ($i =="edit") {

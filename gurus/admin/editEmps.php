@@ -25,8 +25,7 @@ require_once "../func/functions.php";
 <body>
 <?php require_once "../../partials/nav.php"; ?>
 <div class="container">
-  <h2>Manage Employees</h2>
-  <hr>
+  <h1>Manage Employees</h1>
 
   <div class="row">
     <!--                searches the table by using a javascript function-->
