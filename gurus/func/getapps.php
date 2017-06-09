@@ -35,7 +35,7 @@ function buildAppSelect($cat) {
     // see func/databaseConnections.php for documentation on queryDatabase
     $info = getAppSelect($cat);
     echo '<div class="form-group">';
-    echo "<label for='appSelect'>Select Application</label>";
+//    echo "<label for='appSelect'>Select Application</label>";
     echo '<select id="appSelect" class="form-control" onchange="showRatings(this.value)"><option>Select Application</option>';
     foreach($info as $row) {
         $item = $row["Application"];
