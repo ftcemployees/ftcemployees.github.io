@@ -318,3 +318,9 @@ function buildParams(className) {
   }
   return params;
 }
+
+
+function updateRatings(){
+   var updateCat = document.getElementById("catSelect").value;
+
+}

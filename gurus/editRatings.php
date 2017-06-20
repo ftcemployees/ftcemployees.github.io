@@ -51,7 +51,7 @@ require_once "func/functions.php";
              * some comments on workflow here...
              * buildCatSelect builds a select menu that looks like this
              * <select id="catSelect" class="form-control" onchange="showApplication(this.value)">
-             * the onchange attribute calls showApplication(), which will fill the div.id="appSelectDiv"
+             * the onchange attribute calls showRatings(), which will fill the div.id="appSelectDiv"
              * with another select menu for applications. This one will look like this:
              * <select id="appSelect" class="form-control" onchange="showRatings(this.value)">
              * showRatings is similar to showApplications, but instead of building a select menu,
@@ -62,7 +62,7 @@ require_once "func/functions.php";
           <div class="col-md-7"></div>
         </div>
         <div class="row">
-          <form action="gurus/func/updateRatings.php" method="post">
+<!--          <form action="gurus/func/updateRatings.php" method="post">-->
           <table class="table table-responsive">
             <thead>
             <tr>
@@ -77,7 +77,7 @@ require_once "func/functions.php";
             </tbody>
           </table>
 
-          </form>
+<!--          </form>-->
       </div>
 
     </div>

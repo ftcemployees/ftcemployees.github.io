@@ -80,5 +80,5 @@ function buildRatingsEditor($cat)
     echo '</tr>';
     $i++;
   }
-  echo '<button class="btn btn-primary" type="submit" id="sub" disabled>Update</button>';
+  echo '<button class="btn btn-primary" type="button" onclick="updateRatings()" id="sub" disabled>Update</button>';
 }
