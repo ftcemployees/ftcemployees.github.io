@@ -8,7 +8,7 @@
 session_start();
 require_once "../../partials/logVal.php";
 require_once "functions.php";
-$updateCat = $_SESSION['updateCat'];
+$updateCat = filter_input(INPUT_POST, "updateCat");
 $id = $_SESSION['id'];
 $query = "SELECT * FROM `applications` WHERE `CatId` = $updateCat";
 $appList = queryDatabase($query);
@@ -28,31 +28,18 @@ foreach($valueList as $k => $v) {
   }
 }
 
+if(isset($success)) {
+//            header('refresh: 1; url=../editRatings.php');
+    echo '<div class="alert alert-success"><strong>Success!</strong> Your ratings have been updated.</div>
+            <div class="row">
+            <div class="col-md-4 col-md-offset-4"><img src="assets/success.gif"></div>
+            </div>';
+} else {
+//            header('refresh: 3; url=../editRatings.php');
+    echo '<div class="alert alert-danger"><strong>OOPS!</strong> Looks like something went wrong.... Check your data and try again.</div>
+            <div class="row"><div class="col-md-4 col-md-offset-4"><img src="assets/aaron.gif"></div></div>';
+}
 
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-  <?php require_once "../../partials/head.html";?>
-  <link href="gurus/css/updatePageStyle.css" rel="stylesheet" type="text/css">
-</head>
-<body>
-  <?php require_once "../../partials/nav.php"; ?>
-    <div class="container">
-      <div class="jumbotron">
-        <?php
-          if(isset($success)) {
-            header('refresh: 1; url=../editRatings.php');
-            echo '<div class="alert alert-success"><strong>Success!</strong> Your ratings have been updated. You will be redirected back to the edit page.</div>
-        <img src="assets/success.gif"></div>';
-          } else {
-            header('refresh: 3; url=../editRatings.php');
-            echo '<div class="alert alert-danger"><strong>OOPS!</strong> Looks like something went wrong.... Check your data and try again.</div>
-        <img src="assets/aaron.gif"></div>';
-          }
-        ?>
-      </div>
-    </div>
-</body>
-</html>
+

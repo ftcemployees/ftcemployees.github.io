@@ -51,7 +51,7 @@ require_once "func/functions.php";
              * some comments on workflow here...
              * buildCatSelect builds a select menu that looks like this
              * <select id="catSelect" class="form-control" onchange="showApplication(this.value)">
-             * the onchange attribute calls showRatings(), which will fill the div.id="appSelectDiv"
+             * the onchange attribute calls showApplication(), which will fill the div.id="appSelectDiv"
              * with another select menu for applications. This one will look like this:
              * <select id="appSelect" class="form-control" onchange="showRatings(this.value)">
              * showRatings is similar to showApplications, but instead of building a select menu,
@@ -62,7 +62,7 @@ require_once "func/functions.php";
           <div class="col-md-7"></div>
         </div>
         <div class="row">
-<!--          <form action="gurus/func/updateRatings.php" method="post">-->
+          <form action="gurus/func/updateRatings.php" method="post">
           <table class="table table-responsive">
             <thead>
             <tr>
@@ -76,10 +76,32 @@ require_once "func/functions.php";
             <!--Filled by showRatings-->
             </tbody>
           </table>
-
-<!--          </form>-->
+            <button class="btn btn-primary" type="button" id="sub" disabled data-toggle='modal' data-target='#myModal' onclick="updateRatings()">Update</button>
+          </form>
       </div>
 
     </div>
+
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Message</h4>
+            </div>
+            <div class="modal-body">
+              <div class="row" id="message"></div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal" onclick="setTimeout(function(){
+            window.location.reload(1);
+         }, 0000);">Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
   </body>
 </html>

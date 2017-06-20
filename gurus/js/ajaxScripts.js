@@ -69,6 +69,7 @@ function showRatings(str) {
    }
 }
 
+
 function showEditor(str) {
 
    console.log("launching editor");
@@ -322,5 +323,28 @@ function buildParams(className) {
 
 function updateRatings(){
    var updateCat = document.getElementById("catSelect").value;
+   console.log(updateCat);
+    if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+    } else {
+        // code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("message").innerHTML = this.responseText;
+
+        }
+    };
+
+    var params = "updateCat=" + updateCat + "&";
+    params += buildParams("ratings");
+    params = params.trim().replace(/ /g, '%20');
+    console.log("opening");
+    xmlhttp.open("POST", "gurus/func/updateRatings.php", true);
+
+    xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xmlhttp.send(params);
 
 }

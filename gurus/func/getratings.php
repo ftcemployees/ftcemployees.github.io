@@ -69,7 +69,7 @@ function buildRatingsEditor($cat)
     echo "<td><strong>$application</strong></td>";
     echo "<td>$rating</td>";
     echo "<td>
-          <input type='number' value='$rating' class='form-control' name='$appId' id='$application' onkeyup='validRating(this.id, $i)'>
+          <input type='number' value='$rating' class='form-control ratings' name='$appId' id='$application' onkeyup='validRating(this.id, $i)'>
           <span style='color:red; visibility: hidden' id='$i'>Please enter a number between 1 and 10</span>
           </td>";
     if ($cert) {
@@ -80,5 +80,5 @@ function buildRatingsEditor($cat)
     echo '</tr>';
     $i++;
   }
-  echo '<button class="btn btn-primary" type="button" onclick="updateRatings()" id="sub" disabled>Update</button>';
+
 }
