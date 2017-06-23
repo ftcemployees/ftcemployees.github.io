@@ -19,7 +19,14 @@ if (!session_id()) {
         <li><a href="index.php">Home</a></li>
         <li><a href="staticPages/ticketing.php">Ticketing</a></li>
         <li><a href="staticPages/issue-routing.php">Issue Routing</a></li>
-        <li><a href="staticPages/weekly-log.php">Weekly Brief</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Forms&nbsp;<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="staticPages/weekly-log.php">Weekly Brief</a></li>
+            <li><a href="staticPages/kudos.php">Kudos</a></li>
+            <li><a href="staticPages/tutorial-request.php">Tutotial Request</a></li>
+          </ul>
+        </li>
         <?php
         if (isset($_SESSION["username"])) {
           echo '<li class="dropdown">
