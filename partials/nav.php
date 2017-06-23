@@ -22,7 +22,8 @@ if (!session_id()) {
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Forms&nbsp;<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="staticPages/weekly-log.php">Weekly Brief</a></li>
+            <li><a href="staticPages/start-week-log.php">Start of Week Brief</a></li>
+            <li><a href="staticPages/weekly-log.php">End of Week Brief</a></li>
             <li><a href="staticPages/kudos.php">Kudos</a></li>
             <li><a href="staticPages/tutorial-request.php">Tutotial Request</a></li>
           </ul>
