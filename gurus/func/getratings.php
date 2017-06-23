@@ -69,16 +69,16 @@ function buildRatingsEditor($cat)
     echo "<td><strong>$application</strong></td>";
     echo "<td>$rating</td>";
     echo "<td>
-          <input type='number' value='$rating' class='form-control' name='$appId' id='$application' onkeyup='validRating(this.id, $i)'>
+          <input type='number' value='$rating' class='form-control ratings' name='$appId' id='$application' onkeyup='validRating(this.id, $i)'>
           <span style='color:red; visibility: hidden' id='$i'>Please enter a number between 1 and 10</span>
           </td>";
-    if ($cert) {
-      echo "<td class='cert' style='text-align: center;'><span class='glyphicon glyphicon-ok'></span></td>";
+    if ($cert == 0) {
+      echo "<td class='cert'><select name='cert$appId' id='cert' class='form-control ratings'><option value='0' selected>Not Certified</option><option value='1'>Certified</option></select></td>";
     } else {
-      echo "<td class='cert' style='text-align: center;'><span class='glyphicon glyphicon-remove'></span></td>";
+      echo "<td class='cert'><select name='cert$appId' id='cert'><option value='0' class='form-control ratings'>Not Certified</option><option value='1' selected>Certified</option></select></td>";
     }
     echo '</tr>';
     $i++;
   }
-  echo '<button class="btn btn-primary" type="submit" id="sub" disabled>Update</button>';
+
 }
