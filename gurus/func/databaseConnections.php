@@ -22,10 +22,7 @@
 
 define("ROW_COUNT", 1);
 define("RESULTS", 2);
-define("SERVERNAME", "ftcemp");
-define("USERNAME", "bryan");
-define("PASSWORD", "bryan");
-define("DBNAME", "guru_ratings");
+require_once ('dbinfo.php');
 
 function queryDatabase($query) {
 
