@@ -73,6 +73,7 @@ function showRatings(str) {
 function showEditor(str) {
 
    console.log("launching editor");
+   console.log('test');
    if (str == "") {
       console.log('empty');
       document.getElementById("editTable").innerHTML = "";
