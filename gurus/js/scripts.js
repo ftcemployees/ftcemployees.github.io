@@ -75,3 +75,4 @@ function disableEdit() {
 function enableCatEdit(id) {
    document.getElementById(id).disabled = false;
 }
+
