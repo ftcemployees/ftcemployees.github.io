@@ -3,7 +3,7 @@
 
 .banner {
   background-image: url('../live-pics/pic1.jpg');
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   height: 500px;

@@ -73,7 +73,7 @@ require_once "func/functions.php";
             </tr>
             </thead>
             <tbody id="editTable">
-            <!--Filled by showRatings-->
+            <!--Filled by showEditor-->
             </tbody>
           </table>
             <button class="btn btn-primary" type="button" id="sub" disabled data-toggle='modal' data-target='#myModal' onclick="updateRatings()">Update</button>

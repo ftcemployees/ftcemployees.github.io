@@ -73,9 +73,9 @@ function buildRatingsEditor($cat)
           <span style='color:red; visibility: hidden' id='$i'>Please enter a number between 1 and 10</span>
           </td>";
     if ($cert == 0) {
-      echo "<td class='cert'><select name='cert$appId' id='cert' class='form-control ratings'><option value='0' selected>Not Certified</option><option value='1'>Certified</option></select></td>";
+      echo "<td class='cert'><select name='cert$appId' id='cert' class='form-control ratings'><option class='form-control' value='0' selected>Not Certified</option><option class='form-control' value='1'>Certified</option></select></td>";
     } else {
-      echo "<td class='cert'><select name='cert$appId' id='cert'><option value='0' class='form-control ratings'>Not Certified</option><option value='1' selected>Certified</option></select></td>";
+      echo "<td class='cert'><select name='cert$appId' id='cert' class='form-control ratings'><option value='0' class='form-control'>Not Certified</option><option class='form-control' value='1' selected>Certified</option></select></td>";
     }
     echo '</tr>';
     $i++;
