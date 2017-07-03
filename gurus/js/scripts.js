@@ -43,28 +43,28 @@ function search(inp, tab) {
  **/
 function editInfo() {
   document.getElementById('edit').disabled = true;
-  // document.getElementById('edit').style.display = "none";
-  console.log("did edit");
-  document.getElementById('update').disabled = false;
-  // document.getElementById('update').style.display = "inherit";
-   console.log("did update");
+  document.getElementById('edit').style.display = "none";
+  // console.log("did edit");
+  document.getElementById('updateEmp').disabled = false;
+  document.getElementById('updateEmp').style.display = "inline-block";
+  //  console.log("did update");
   document.getElementById('cancel').disabled = false;
-  // document.getElementById('cancel').style.display = "inherit";
-   console.log("did cancel");
+  document.getElementById('cancel').style.display = "inline-block";
+  //  console.log("did cancel");
   var inputs = document.getElementsByTagName('input');
   for (var i = 0; i < inputs.length; i++) {
     inputs[i].disabled = false;
-     console.log("did input:" + i);
+     // console.log("did input:" + i);
   }
 }
 
 function disableEdit() {
    document.getElementById('edit').disabled = false;
-   // document.getElementById('edit').style.display = "inherit";
-   document.getElementById('update').disabled = true;
-   // document.getElementById('update').style.display = "none";
+   document.getElementById('edit').style.display = "inline-block";
+   document.getElementById('updateEmp').disabled = true;
+   document.getElementById('updateEmp').style.display = "none";
    document.getElementById('cancel').disabled = true;
-   // document.getElementById('cancel').style.display = "none";
+   document.getElementById('cancel').style.display = "none";
    var inputs = document.getElementsByTagName('input');
    for (var i = 0; i < inputs.length; i++) {
       inputs[i].disabled = true;

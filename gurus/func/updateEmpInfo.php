@@ -15,23 +15,30 @@ $count = updateEmpInfo($fname, $lname, $username, $phone, $email);
 
 if($count) {
     echo '<head>';
-    require_once "../../partials/head.html";
-    echo '<link href="gurus/css/updatePageStyle.css" rel="stylesheet" type="text/css">';
-    echo '</head>';
-  require_once "../../partials/nav.php";
-  header('refresh: 3; url=../personalInfo.php');
-  echo '<div class="container"><div class="alert alert-success" id="success"><strong>Success!</strong> Information updated! You will be redirected...
-</div>
-<img src="assets/success.gif"></div>';
+  echo '
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="alert alert-success" id="success"><strong>Success!</strong> Information updated!</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <img src="assets/success.gif">
+    </div>
+  </div>';
 } else {
-    echo '<head>';
-    require_once "../../partials/head.html";
-    echo '<link href="gurus/css/updatePageStyle.css" rel="stylesheet" type="text/css">';
-    echo '</head>';
-    require_once "../../partials/nav.php";
-    header('refresh: 5; url=../personalInfo.php');
-    echo '<div class="container"><div class="alert alert-danger" id="failure" style="margin:auto"><strong>ERROR!</strong> Something went wrong! You will be redirected. Please try again...</div>
-    <img src="assets/aaron.gif"></div>';
+    echo '
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="alert alert-danger" id="failure" style="margin:auto"><strong>ERROR!</strong> Something went wrong! Please refresh and try again</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <img src="assets/aaron.gif"></div>
+  </div>
+';
 }
 
 ?>
+

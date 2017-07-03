@@ -349,3 +349,11 @@ function buildParams(className) {
   return params;
 }
 
+
+function updateInfo() {
+   var params = buildParams('inputs');
+   console.log(params);
+   $.post('gurus/func/updateEmpInfo.php', params, function(res, status) {
+      $('#message').html(res);
+   })
+}

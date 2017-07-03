@@ -10,6 +10,7 @@
 
   <link href="gurus/css/editInfoStyle.css" type="text/css" rel="stylesheet">
   <script src="gurus/js/scripts.js" type="text/javascript"></script>
+  <script src="gurus/js/ajaxScripts.js" type="text/javascript"></script>
 </head>
 <body>
 <?php
@@ -59,18 +60,35 @@ $userInfo = $dataInfo[0];
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-10">
-                    <span class="form-group btn-group pull-right">
-            <button class="btn btn-primary" id="edit" onmouseup="editInfo()">Edit Info
-            </button><a role="button" class="btn btn-warning" id="pwd" href="gurus/func/changePwdView.php">Change Password</a>
-            <button disabled class="btn btn-primary" type="submit" id="update">Update Info</button>
-            <button disabled class="btn btn-info" type="reset" id="cancel" onclick="disableEdit()">Cancel</button>
-          </span>
+        <div class="col-sm-12">
+            <button class="btn btn-primary" id="edit" onclick="editInfo()">Edit Your Info</button>
+            <button disabled class="btn btn-primary" type="button" id="updateEmp" onclick="updateInfo()" data-toggle='modal' data-target='#myModal' style="display:none;">Update Your Info</button>
+            <button disabled class="btn btn-info" type="reset" id="cancel"  onclick="disableEdit()" style="display:none;">Cancel</button>
+            <a role="button" class="btn btn-warning" id="pwd" href="gurus/func/changePwdView.php">Change Password</a>
         </div>
       </div>
     </form>
 </div>
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Message</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row" id="message"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="setTimeout(function(){
+            window.location.reload(1);
+         }, 0000);">Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 
 </body>

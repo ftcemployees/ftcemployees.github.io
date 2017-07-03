@@ -65,5 +65,5 @@ function getApplications() {
  * @return array
  */
 function getEmployees() {
-  return queryDatabase("SELECT * FROM `employee_info` WHERE `Active` = 1");
+  return queryDatabase("SELECT * FROM `employee_info` WHERE `Active` = 1 ORDER BY `First Name`");
 }
