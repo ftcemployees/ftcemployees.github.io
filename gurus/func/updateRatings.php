@@ -13,17 +13,23 @@ $id = $_SESSION['id'];
 $query = "SELECT * FROM `applications` WHERE `CatId` = $updateCat";
 $appList = queryDatabase($query);
 $valueList = array();
-
+$certList = array();
 foreach($appList as $row) {
   $app = $row["AppID"];
   $val = htmlspecialchars($_POST[$app]);
-  if(isset($val)) {
+  $certkey = 'cert'. $app;
+//  echo "<br>certval = " . htmlspecialchars($_POST[$certkey]);;
+  $cert = $_POST[$certkey];
+  if(isset($val) && isset($cert)) {
     $valueList += array($app => $val);
+    $certList += array($certkey => $cert);
   }
 }
 
 foreach($valueList as $k => $v) {
-  if(pushRatings($k, $v, $id)) {
+  $certkey = 'cert' . $k;
+  $cert = $certList[$certkey];
+  if(pushRatings($k, $v, $cert, $id)) {
     $success = true;
   }
 }

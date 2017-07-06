@@ -184,7 +184,7 @@ function updateEmpInfo($first, $last, $user, $phone, $email) {
     }
 }
 
-function pushRatings($appId, $rating, $empId) {
+function pushRatings($appId, $rating, $cert, $empId) {
   $servername = SERVERNAME;
   $username = USERNAME;
   $password =  PASSWORD;
@@ -192,11 +192,12 @@ function pushRatings($appId, $rating, $empId) {
   try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $query = "UPDATE `gururatings` SET `Rating`= :rating, `Last_Modified` = CURRENT_TIMESTAMP WHERE `AppId` = :appId AND `EmpId` = :empId";
+    $query = "UPDATE `gururatings` SET `Rating`= :rating, `Certified` = :cert, `Last_Modified` = CURRENT_TIMESTAMP WHERE `AppId` = :appId AND `EmpId` = :empId";
     $stmt = $conn->prepare($query);
     $stmt->bindValue(':rating', $rating, PDO::PARAM_INT);
     $stmt->bindValue(':appId', $appId, PDO::PARAM_INT);
     $stmt->bindValue(':empId', $empId, PDO::PARAM_INT);
+    $stmt->bindValue(':cert', $cert, PDO::PARAM_INT);
     $stmt->execute();
     $conn = null;
     $rows = $stmt->rowCount();

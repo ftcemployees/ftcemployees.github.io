@@ -327,6 +327,7 @@ function updateRatings(){
    params += buildParams("ratings");
    params = params.trim().replace(/ /g, '%20');
    console.log("opening");
+   console.log(params);
    xmlhttp.open("POST", "gurus/func/updateRatings.php", true);
 
    xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
