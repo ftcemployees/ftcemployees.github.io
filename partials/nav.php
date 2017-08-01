@@ -25,7 +25,7 @@ if (!session_id()) {
             <li><a href="staticPages/start-week-log.php">Start of Week Brief</a></li>
             <li><a href="staticPages/weekly-log.php">End of Week Brief</a></li>
             <li><a href="staticPages/kudos.php">Kudos</a></li>
-            <li><a href="staticPages/tutorial-request.php">Tutotial Request</a></li>
+            <li><a href="staticPages/tutorial-request.php">Tutorial Request</a></li>
           </ul>
         </li>
         <?php
